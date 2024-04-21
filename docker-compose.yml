@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+    nginx:
+        image: nginx:latest
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/conf.d:/etc/nginx/conf.d
+        ports:
+            - "8876:80"
+        depends_on:
+            - app
+        container_name: project_nginx
+
+    app:
+        build:
+            context: .
+            dockerfile: docker/app/Dockerfile
+        volumes:
+            - ./:/var/www
+        container_name: project_app
+
+    postgres:
+        image: postgres:latest
+        container_name: project_postgres
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}  # Укажите имя вашей базы данных
+            POSTGRES_USER: ${DB_USERNAME}  # Укажите имя пользователя PostgreSQL
+            POSTGRES_PASSWORD: ${DB_PASSWORD}  # Укажите пароль пользователя PostgreSQL
+        volumes:
+            - ./docker/postgres/data:/var/lib/postgresql/data

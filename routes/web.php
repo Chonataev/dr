@@ -1,0 +1,30 @@
+<?php
+
+use App\Http\Controllers\ThemesController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\ForumController;
+use App\Http\Controllers\ResultController;
+use App\Http\Controllers\DisqusController;
+use App\Http\Controllers\ContentController;
+Route::get('/', function () {
+    return view('welcome');
+})->name('main');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::post('/login', [AuthController::class, 'login']);
+
+
+Route::resource('themes', ThemesController::class);
+Route::resource('questions', QuestionController::class);
+Route::resource('tests', TestController::class);
+Route::resource('forums', ForumController::class);
+Route::resource('results', ResultController::class);
+Route::resource('disqus', DisqusController::class);
+Route::resource('contents', ContentController::class);
