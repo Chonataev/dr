@@ -12,16 +12,16 @@ class ThemesController extends Controller
     public function index()
     {
         $themes = Theme::all();
-        return view('themes.index', compact('themes'));
+        return view('admin.themes.index', compact('themes'));
     }
     public function create(): Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        return view('themes.create');
+        return view('admin.themes.create');
     }
 
     public function show(Theme $theme)
     {
-        return view('themes.show', compact('theme'));
+        return view('admin.themes.show', compact('theme'));
     }
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
@@ -44,7 +44,7 @@ class ThemesController extends Controller
 
     public function edit(Theme $theme)
     {
-        return view('themes.edit', compact('theme'));
+        return view('admin.themes.edit', compact('theme'));
     }
 
     public function update(Request $request, Theme $theme)
@@ -63,7 +63,7 @@ class ThemesController extends Controller
         ]);
 
         // Редирект на страницу с подтверждением или другую страницу
-        return redirect()->route('themes.index', $theme)->with('success', 'Theme updated successfully!');
+        return redirect()->route('admin.themes.index', $theme)->with('success', 'Theme updated successfully!');
     }
 
     public function destroy(Theme $theme)
@@ -72,6 +72,6 @@ class ThemesController extends Controller
         $theme->delete();
 
         // Редирект на страницу с подтверждением или другую страницу
-        return redirect()->route('themes.index')->with('success', 'Theme deleted successfully!');
+        return redirect()->route('admin.themes.index')->with('success', 'Theme deleted successfully!');
     }
 }
