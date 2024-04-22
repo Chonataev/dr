@@ -5,7 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Content List</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <div>Content List </div>
+                        <div><a href="{{ route('themes.create') }}">create</a></div>
+                    </div>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -18,6 +21,7 @@
                             <thead>
                             <tr>
                                 <th>Title</th>
+                                <th>Theme</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -26,6 +30,7 @@
                             @foreach ($themes as $theme)
                                 <tr>
                                     <td>{{ $theme->title }}</td>
+                                    <td>{{ $theme->name }}</td>
                                     <td>{{ $theme->status }}</td>
                                     <td>
                                         <a href="{{ route('themes.show', $theme) }}" class="btn btn-primary">View</a>

@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         // Неверный email или пароль
         session(['error' => 'Неверный email или пароль']);
-        return response()->redirectTo('login');
+        return response()->redirectTo('auth.login');
 
 
 

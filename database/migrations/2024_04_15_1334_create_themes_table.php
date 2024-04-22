@@ -12,6 +12,7 @@ class CreateThemesTable extends Migration
             $table->id()->autoIncrement();
             $table->unsignedBigInteger('user_id');
             $table->string('title');
+            $table->integer('theme_id')->default(null)->nullable();
             $table->string('status')->default(true);
             $table->timestamps();
 

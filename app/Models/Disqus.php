@@ -9,6 +9,7 @@ class Disqus extends Model
 {
     use HasFactory;
 
+    protected $table = 'disqus'; // Изменение имени таблицы
     protected $fillable = [
         'forum_id',
         'disqus_id',

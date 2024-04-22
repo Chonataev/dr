@@ -28,6 +28,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="theme_id">Theme</label>
+                                <select class="form-control" id="theme_id" name="theme_id">
+                                    <option value="{{ $theme->id }}> {{ $theme->title }}</option>
+                                    @if (isset ($themes))
+                                        @foreach ($themes as $theme)
+                                            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="status">Status</label>
                                 <input type="text" class="form-control" id="status" name="status" value="{{ old('status', $theme->status) }}">
                             </div>

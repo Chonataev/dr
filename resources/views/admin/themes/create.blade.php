@@ -27,6 +27,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="theme_id">Theme</label>
+                                <select class="form-control" id="theme_id" name="theme_id">
+                                    <option></option>
+                                    @if (isset ($themes))
+                                        @foreach ($themes as $theme)
+                                            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                                        @endforeach
+                                    @endif
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="body">Body</label>
                                 <textarea class="form-control" id="body" name="body" rows="5"></textarea>
                             </div>

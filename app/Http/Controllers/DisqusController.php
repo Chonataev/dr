@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Forum;
 use Illuminate\Http\Request;
 use App\Models\Disqus;
 
 class DisqusController extends Controller
 {
-    public function index()
+    public function index( Request $request, Forum $forum )
     {
-        $disqusList = Disqus::all();
-        return view('disqus.index', compact('disqusList'));
     }
 
     public function create()
@@ -28,9 +27,14 @@ class DisqusController extends Controller
         return view('disqus.show', compact('disqus'));
     }
 
-    public function edit(Disqus $disqus)
+    public function edit(Forum $forum, $id)
     {
-        return view('disqus.edit', compact('disqus'));
+        $forum = Forum::where('id', $id)->first(); // Находим форум по его идентификатору
+
+        if ($forum) {
+            $disqus = Disqus::where('forum_id', $forum->id)->get(); // Находим записи Disqus, где forum_id совпадает с идентификатором форума
+        }
+        return view('admin.disqus.index', compact('disqus'));
     }
 
     public function update(Request $request, Disqus $disqus)

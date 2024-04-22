@@ -9,6 +9,8 @@ class Forum extends Model
 {
     use HasFactory;
 
+    protected $table = 'forum'; // Изменение имени таблицы
+
     protected $fillable = [
         'title',
         'body',

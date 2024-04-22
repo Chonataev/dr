@@ -12,11 +12,17 @@ class ThemesController extends Controller
     public function index()
     {
         $themes = Theme::all();
+        foreach ($themes as $theme)
+        {
+            if ( $theme->theme_id )
+                $theme->name = Theme::find($theme->theme_id)->title;
+        }
         return view('admin.themes.index', compact('themes'));
     }
     public function create(): Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        return view('admin.themes.create');
+        $themes = Theme::all();
+        return view('admin.themes.create', compact('themes'));
     }
 
     public function show(Theme $theme)
@@ -35,6 +41,7 @@ class ThemesController extends Controller
         Theme::create([
             'title' => $request->title,
             'user_id' => auth()->user()->id, // или любой другой способ определения пользователя
+            'theme_id' => $request->theme_id
         ]);
 
         // Редирект на страницу с подтверждением или другую страницу
@@ -44,7 +51,15 @@ class ThemesController extends Controller
 
     public function edit(Theme $theme)
     {
-        return view('admin.themes.edit', compact('theme'));
+        $themes = Theme::all();
+        foreach ($themes as $item )
+        {
+            if ( $theme->id == $item->id )
+            {
+                unset($item);
+            }
+        }
+        return view('admin.themes.edit', compact('theme', 'themes'));
     }
 
     public function update(Request $request, Theme $theme)
@@ -59,11 +74,12 @@ class ThemesController extends Controller
         // Обновление записи в базе данных
         $theme->update([
             'title' => $request->title,
+            'theme_id' => $request->theme_id,
             'status' => $request->status,
         ]);
 
         // Редирект на страницу с подтверждением или другую страницу
-        return redirect()->route('admin.themes.index', $theme)->with('success', 'Theme updated successfully!');
+        return redirect()->route('themes.index', $theme)->with('success', 'Theme updated successfully!');
     }
 
     public function destroy(Theme $theme)
@@ -72,6 +88,6 @@ class ThemesController extends Controller
         $theme->delete();
 
         // Редирект на страницу с подтверждением или другую страницу
-        return redirect()->route('admin.themes.index')->with('success', 'Theme deleted successfully!');
+        return redirect()->route('themes.index')->with('success', 'Theme deleted successfully!');
     }
 }

@@ -13,6 +13,7 @@ class Theme extends Model
         'title',
         'status',
         'user_id',
+        'theme_id',
     ];
 
     // Здесь вы можете определить отношения с другими моделями, если это необходимо

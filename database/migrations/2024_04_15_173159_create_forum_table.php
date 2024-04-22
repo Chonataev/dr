@@ -9,12 +9,12 @@ class CreateForumTable extends Migration
     public function up()
     {
         Schema::create('forum', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->string('title');
             $table->text('body');
             $table->unsignedBigInteger('user_id');
-            $table->integer('importance')->unique();
-            $table->string('status');
+            $table->integer('importance')->default(0)->nullable();
+            $table->string('status')->default(true);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
