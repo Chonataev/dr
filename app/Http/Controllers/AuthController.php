@@ -16,19 +16,14 @@ class AuthController extends Controller
             $user = Auth::user();
             // Успешная аутентификация
             session(['success' => 'Успешная аутентификация']);
-            $response = response()->json(['message' => 'Успешная аутентификация', 'user' => $user], 200);
 
-
-            return $response->setStatusCode(200)->header('Location', route('main'));
+            return response()->redirectTo('home');
 
         }
 
         // Неверный email или пароль
         session(['error' => 'Неверный email или пароль']);
         return response()->redirectTo('auth.login');
-
-
-
 
     }
 }
