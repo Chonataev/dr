@@ -15,39 +15,34 @@ class AppController extends Controller
     {
         return Theme::all();
     }
+
     public function index()
     {
-        $themes = $this->getThemes();
-        return view('app.index', compact('themes'));
+        return view('app.index');
     }
 
     public function forums()
     {
-        $themes = $this->getThemes();
-        return view('app.forums', compact('themes'));
+        return view('app.forums');
     }
 
     public function forumDetails($forum_id)
     {
-        $themes = $this->getThemes();
-        return view('app.forums-details', compact('themes'));
+        return view('app.forums-details');
     }
 
     public function bookDetails($book_title_id)
     {
-        $themes = $this->getThemes();
-        return view('app.book-details', compact('themes'));
+        return view('app.book-details');
     }
 
     public function docs()
     {
-        $themes = $this->getThemes();
-        return view('app.docs', compact('themes'));
+        return view('app.docs');
     }
 
     public function test()
     {
-        $themes = $this->getThemes();
-        return view('app.test', compact('themes'));
+        return view('app.test');
     }
 }

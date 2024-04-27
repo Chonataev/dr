@@ -88,17 +88,20 @@
 <div class="nk-sidebar">
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
-
+            <li class="nav-label">Topics in physics</li>
             @foreach ($themes as $theme)
-                <li class="nav-label">{{$theme->title}}</li>
                 <li>
                     <a class="has-arrow" href="" aria-expanded="false">
                         <i class="icon-notebook menu-icon"></i>
                         <span class="nav-text">{{$theme->title}}</span>
                     </a>
-                    <ul aria-expanded="false">
-                        <li><a href="">subtitle 1</a></li>
-                    </ul>
+                    @if(isset($theme['themes']))
+                        <ul aria-expanded="false">
+                            @foreach($theme['themes'] as $subtheme)
+                                <li class="nav-label">{{ $subtheme->title }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                 </li>
             @endforeach
         </ul>
