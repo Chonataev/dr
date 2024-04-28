@@ -29,11 +29,30 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="answers">Answers</label>
-                                        <input type="text" class="form-control" id="answer1" name="questions[1][answers][]">
-                                        <input type="text" class="form-control" id="answer2" name="questions[1][answers][]">
-                                        <input type="text" class="form-control" id="answer3" name="questions[1][answers][]">
-                                        <input type="text" class="form-control" id="answer4" name="questions[1][answers][]">
+                                        <label for="answer1">Answer 1</label>
+                                        <input type="text" class="form-control" id="answer1" name="questions[1][answers][1]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="answer2">Answer 2</label>
+                                        <input type="text" class="form-control" id="answer2" name="questions[1][answers][2]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="answer3">Answer 3</label>
+                                        <input type="text" class="form-control" id="answer3" name="questions[1][answers][3]">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="answer4">Answer 4</label>
+                                        <input type="text" class="form-control" id="answer4" name="questions[1][answers][4]">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="correct_answer">Correct Answer</label>
+                                        <select class="form-control" id="correct_answer" name="questions[1][correct_answer]">
+                                            <option value="1">Answer 1</option>
+                                            <option value="2">Answer 2</option>
+                                            <option value="3">Answer 3</option>
+                                            <option value="4">Answer 4</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -60,12 +79,32 @@
                     <label for="question${questionIndex}">Question</label>
                     <input type="text" class="form-control" id="question${questionIndex}" name="questions[${questionIndex}][question]">
                 </div>
+
                 <div class="form-group">
-                    <label for="answers">Answers</label>
-                    <input type="text" class="form-control" id="answer${questionIndex}_1" name="questions[${questionIndex}][answers][]">
-                    <input type="text" class="form-control" id="answer${questionIndex}_2" name="questions[${questionIndex}][answers][]">
-                    <input type="text" class="form-control" id="answer${questionIndex}_3" name="questions[${questionIndex}][answers][]">
-                    <input type="text" class="form-control" id="answer${questionIndex}_4" name="questions[${questionIndex}][answers][]">
+                    <label for="answer${questionIndex}1">Answer 1</label>
+                    <input type="text" class="form-control" id="answer${questionIndex}1" name="questions[${questionIndex}][answers][1]">
+                </div>
+                <div class="form-group">
+                    <label for="answer${questionIndex}2">Answer 2</label>
+                    <input type="text" class="form-control" id="answer${questionIndex}2" name="questions[${questionIndex}][answers][2]">
+                </div>
+                <div class="form-group">
+                    <label for="answer${questionIndex}3">Answer 3</label>
+                    <input type="text" class="form-control" id="answer${questionIndex}3" name="questions[${questionIndex}][answers][3]">
+                </div>
+                <div class="form-group">
+                    <label for="answer${questionIndex}4">Answer 4</label>
+                    <input type="text" class="form-control" id="answer${questionIndex}4" name="questions[${questionIndex}][answers][4]">
+                </div>
+
+                <div class="form-group">
+                    <label for="correct_answer${questionIndex}">Correct Answer</label>
+                    <select class="form-control" id="correct_answer${questionIndex}" name="questions[${questionIndex}][correct_answer]">
+                        <option value="1">Answer 1</option>
+                        <option value="2">Answer 2</option>
+                        <option value="3">Answer 3</option>
+                        <option value="4">Answer 4</option>
+                    </select>
                 </div>
             `;
 

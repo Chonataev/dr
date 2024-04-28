@@ -3,51 +3,21 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header d-flex justify-content-between">
-                        <div>Content List </div>
-                        <div><a href="{{ route('forums.create') }}">create</a></div>
-                    </div>
+                    <div class="card-header">Create Disqus</div>
 
                     <div class="card-body">
+                        <form method="POST" action="{{ route('disqus.store', $forum->id) }}">
+                            @csrf
 
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Body</th>
-                                <th>Owner</th>
-                                <th>Importance</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                                <th>Comments</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($forum as $item)
-                                <tr>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ $item->body }}</td>
-                                    <td>{{ $item->owner }}</td>
-                                    <td>{{ $item->importance }}</td>
-                                    <td>{{ $item->status }}</td>
-                                    <td>
-                                        <a href="{{ route('forums.show', $item) }}" class="btn btn-primary">View</a>
-                                        <a href="{{ route('forums.edit', $item) }}" class="btn btn-secondary">Edit</a>
-                                        <form action="{{ route('forums.destroy', $item) }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('disqus.index', $item) }}" class="btn">Коментарии</a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                            <div class="form-group">
+                                <label for="body">Disqus Body</label>
+                                <textarea class="form-control" id="body" name="body" rows="5"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </form>
                     </div>
                 </div>
             </div>

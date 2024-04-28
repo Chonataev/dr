@@ -12,6 +12,7 @@ class Answer extends Model
     protected $fillable = [
         'question_id',
         'content',
+        'right',
     ];
 
     // Отношение "многие к одному" с моделью Question

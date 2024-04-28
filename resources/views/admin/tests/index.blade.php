@@ -22,7 +22,6 @@
                                 <th>Тема</th>
                                 <th>Status</th>
                                 <th>Action</th>
-                                <th>Тест суролору</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -33,16 +32,13 @@
                                     <td>{{ $item->theme_title }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
-                                        <a href="{{ route('tests.show', $item) }}" class="btn btn-primary">View</a>
+                                        <a href="{{ route('questions.index', ['test' => $item]) }}" class="btn btn-secondary">Коруу</a>
                                         <a href="{{ route('tests.edit', $item) }}" class="btn btn-secondary">Edit</a>
                                         <form action="{{ route('tests.destroy', $item) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         </form>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('questions.index', ['test' => $item]) }}" class="btn btn-secondary">Коруу</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -7,14 +7,14 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div>Content List </div>
-                        <div><a href="{{ route('forums.create') }}">create</a></div>
+                        <div><a href="{{ route('disqus.create') }}">create</a></div>
                     </div>
 
                     <div class="card-body">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Body</th>h>
+                                <th>Body</th>
                             </tr>
                             </thead>
                             <tbody>

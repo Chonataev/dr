@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Test;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -66,11 +67,18 @@ class QuestionController extends Controller
         $question->test_id = $test_id;
         $question->save();
 
+
         foreach ($questionData['answers'] as $index => $answer) {
             if (!empty($answer)) {
+                $right = null;
                 // Создание ответа и сохранение question_id
+                if ($questionData['correct_answer'] == $index )
+                {
+                    $right = true;
+                }
                 $question->answers()->create([
                     'content' => $answer,
+                    'right' => $right,
                     'question_id' => $question->id, // Сохранение ID вопроса
                 ]);
             }
@@ -80,29 +88,29 @@ class QuestionController extends Controller
     return redirect()->route('tests.index')->with('success', 'Questions created successfully!');
 }
 
-
-
     /**
      * Show the form for editing the specified question.
      *
-     * @param Test $test
-     * @param Question $question
+     * @param $question_id
      * @return Factory|View
      */
-    public function edit(Test $test, Question $question): Factory|View
+    public function edit($question_id): Factory|View
     {
-        return view('questions.edit', compact('test', 'question'));
+        $question = Question::findOrFail($question_id);
+        $answers = Answer::where('question_id', $question->id)->get();
+        return view('admin.questions.edit', compact('question', 'answers'));
     }
+
+
 
     /**
      * Update the specified question in storage.
      *
      * @param Request $request
-     * @param Test $test
      * @param Question $question
      * @return RedirectResponse
      */
-    public function update(Request $request, Test $test, Question $question): RedirectResponse
+    public function update(Request $request, Question $question): RedirectResponse
     {
         $request->validate([
             'question' => 'required|string',
@@ -117,16 +125,22 @@ class QuestionController extends Controller
         $answersData = $request->input('answers');
         foreach ($answersData as $index => $answerData) {
             // Если ответ существует, обновляем его
-            if (isset($question->answers[$index])) {
-                $question->answers[$index]->content = $answerData;
-                $question->answers[$index]->save();
+            $answer = $question->answers->where('id', $index)->first();
+            if ($answer) {
+                $answer->content = $answerData;
+                $answer->right = ($index == $request->input('correct_answer')); // Проверяем правильность ответа
+                $answer->save();
             } else {
                 // Если ответа не существует, создаем новый
-                $question->answers()->create(['answer' => $answerData]);
+                $question->answers()->create([
+                    'content' => $answerData,
+                    'right' => ($index === $request->input('correct_answer'))
+                ]);
             }
         }
 
-        return redirect()->route('questions.index')->with('success', 'Question updated successfully!');
+        $test_id = $question->test_id;
+        return redirect()->route('questions.index', ['test' => $test_id])->with('success', 'Question updated successfully!');
     }
 
     /**
@@ -140,6 +154,7 @@ class QuestionController extends Controller
     {
         $question->delete();
 
-        return redirect()->route('questions.index')->with('success', 'Question deleted successfully!');
+        $test_id = $question->test_id;
+        return redirect()->route('questions.index', ['test' => $test_id])->with('success', 'Question updated successfully!');
     }
 }

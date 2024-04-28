@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disqus;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Forum;
@@ -44,7 +45,9 @@ class ForumController extends Controller
 
     public function show(Forum $forum)
     {
-        return view('admin.forums.show', compact('forum'));
+        // Найти disqus для данного форума
+        $disqus = Disqus::where('forum_id', $forum->id)->get()->all();
+        return view('admin.forums.show', compact('forum', 'disqus'));
     }
 
     public function edit(Forum $forum)

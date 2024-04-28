@@ -3,47 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\Forum;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\Disqus;
 
 class DisqusController extends Controller
 {
-    public function index( Request $request, Forum $forum )
+
+    public function create($forum_id)
     {
+        // Получите тест по его идентификатору
+        $forum = Forum::findOrFail($forum_id);
+
+        return view('admin.disqus.create', compact('forum'));
     }
 
-    public function create()
+    public function store($forum_id, Request $request)
     {
-        return view('disqus.create');
+        $request->validate([
+            'body' => 'required|string',
+        ]);
+
+        // Создание новой записи disqus
+        $disqus = new Disqus();
+        $disqus->forum_id = $forum_id;
+        $disqus->body = $request->body;
+        $disqus->status = true; // Установка статуса по умолчанию, если требуется
+        $disqus->save();
+
+        // Редирект на страницу с подробностями форума или куда угодно еще
+        return redirect()->route('forums.show', $disqus->forum_id)->with('success', 'Disqus created successfully!');
     }
 
-    public function store(Request $request)
-    {
-        // Валидация данных и сохранение в базе
-    }
 
-    public function show(Disqus $disqus)
+    /**
+     * Remove the specified question from storage.
+     *
+     * @param Forum $forum
+     * @param Disqus $disqus
+     * @return RedirectResponse
+     */
+    public function destroy(Forum $forum, Disqus $disqus): RedirectResponse
     {
-        return view('disqus.show', compact('disqus'));
-    }
+        $disqus->delete();
 
-    public function edit(Forum $forum, $id)
-    {
-        $forum = Forum::where('id', $id)->first(); // Находим форум по его идентификатору
-
-        if ($forum) {
-            $disqus = Disqus::where('forum_id', $forum->id)->get(); // Находим записи Disqus, где forum_id совпадает с идентификатором форума
-        }
-        return view('admin.disqus.index', compact('disqus'));
-    }
-
-    public function update(Request $request, Disqus $disqus)
-    {
-        // Валидация данных и обновление записи в базе
-    }
-
-    public function destroy(Disqus $disqus)
-    {
-        // Удаление записи из базы данных
+        $forum_id = $forum->id;
+        return redirect()->route('forums.index', ['forum' => $forum_id])->with('success', 'Question updated successfully!');
     }
 }
