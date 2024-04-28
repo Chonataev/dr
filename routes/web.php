@@ -28,21 +28,15 @@ Route::prefix('/')->group(function () {
 });
 
 Route::prefix('/auth')->group(function () {
-    Route::get('/login', function (){
-        return view('auth.login');
-    });
+
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
 
     Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
-Route::post('/logout', [AuthController::class, 'login'])->name('logout');
 
 
-Route::prefix('/auth')->group(function () {
-    Route::get('/register', function (){
-        return view('auth.register');
-    })->name('/register');
-    Route::post('/register', [RegisterController::class, 'register'])->name('register');
-});
 
 Route::prefix('admin')->middleware('auth')->group(function ()
 {
