@@ -12,9 +12,8 @@ class CreateTestsTable extends Migration
             $table->id();
             $table->string('title');
             $table->unsignedBigInteger('themes_id');
-            $table->text('body');
             $table->unsignedBigInteger('user_id');
-            $table->string('status');
+            $table->string('status')->default(true);
             $table->timestamps();
 
             $table->foreign('themes_id')->references('id')->on('themes');

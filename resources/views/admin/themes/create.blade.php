@@ -39,8 +39,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="body">Body</label>
-                                <textarea class="form-control" id="body" name="body" rows="5"></textarea>
+                                <label for="body">Description</label>
+                                <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Create</button>

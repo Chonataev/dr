@@ -6,16 +6,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <div>Content List </div>
-                        <div><a href="{{ route('forums.create') }}">create</a></div>
+                        <div>Вопросы</div>
+                        <div>
+                            <a href="{{ route('forums.create') }}" class="btn btn-primary">create</a>
+                        </div>
                     </div>
 
                     <div class="card-body">
-                        @if (session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
 
                         <table class="table">
                             <thead>

@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Books extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
-        'gender',
-        'age',
+        'title',
+        'type',
+        'file_url',
+        'themes_id',
+        'status',
     ];
 
     // Добавьте здесь отношения с другими моделями, если это необходимо

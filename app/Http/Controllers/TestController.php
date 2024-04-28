@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Test;
+use App\Models\Theme;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
     public function index()
     {
         $tests = Test::all();
-        return view('tests.index', compact('tests'));
+        foreach ( $tests as $test )
+        {
+            $theme = Theme::findOrFail($test->themes_id);
+            $test['theme_title'] = $theme->title;
+            $user = User::findOrFail($test->user_id);
+            $test['name'] = $user->name;
+        }
+        return view('admin.tests.index', compact('tests'));
     }
 
     public function create()
     {
-        return view('tests.create');
+        $themes = Theme::all();
+        return view('admin.tests.create', compact('themes'));
     }
 
     public function store(Request $request)
@@ -24,25 +35,27 @@ class TestController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'themes_id' => 'required|integer',
-            'body' => 'required|string',
-            'status' => 'required|string',
             // Добавьте здесь другие правила валидации
         ]);
 
-        // Создание записи в базе данных
-        Test::create($request->all());
+        Test::create([
+            'title' => $request->title,
+            'themes_id' => $request->themes_id,
+            'user_id' => Auth::user()->getAuthIdentifier(),
+        ]);
 
         return redirect()->route('tests.index')->with('success', 'Test created successfully!');
     }
 
     public function show(Test $test)
     {
-        return view('tests.show', compact('test'));
+        return view('admin.tests.show', compact('test'));
     }
 
     public function edit(Test $test)
     {
-        return view('tests.edit', compact('test'));
+        $themes = Theme::all();
+        return view('admin.tests.edit', compact('themes', 'test'));
     }
 
     public function update(Request $request, Test $test)
@@ -51,7 +64,6 @@ class TestController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'themes_id' => 'required|integer',
-            'body' => 'required|string',
             'status' => 'required|string',
             // Добавьте здесь другие правила валидации
         ]);

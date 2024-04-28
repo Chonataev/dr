@@ -2,6 +2,7 @@
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ThemesController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\QuestionController;
@@ -9,7 +10,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\DisqusController;
-use App\Http\Controllers\ContentController;
+use App\Http\Controllers\BooksController;
 
 
 
@@ -33,6 +34,8 @@ Route::prefix('/auth')->group(function () {
 
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
+Route::post('/logout', [AuthController::class, 'login'])->name('logout');
+
 
 Route::prefix('/auth')->group(function () {
     Route::get('/register', function (){
@@ -43,12 +46,16 @@ Route::prefix('/auth')->group(function () {
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('themes', ThemesController::class);
-    Route::resource('questions', QuestionController::class);
+    Route::get('tests/{test}/questions/create', [QuestionController::class, 'create'])->name('questions.create');
+    Route::get('tests/{test}/questions/index', [QuestionController::class, 'index'])->name('questions.index');
+    Route::post('questions/store/{test_id}', [QuestionController::class, 'store'])->name('questions.store');
+
     Route::resource('tests', TestController::class);
     Route::resource('forums', ForumController::class);
     Route::resource('results', ResultController::class);
     Route::resource('disqus', DisqusController::class);
-    Route::resource('contents', ContentController::class);
+    Route::resource('books', BooksController::class);
+    Route::resource('users', UserController::class);
 });
 
 

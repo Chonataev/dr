@@ -18,12 +18,22 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('contents.store') }}">
+                        <form method="POST" action="{{ route('books.store') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" id="title" name="title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="status">Type</label>
+                                <input type="text" class="form-control" id="type" name="type">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="title">File/Book</label>
+                                <input type="file" class="form-control" id="book" name="file_url">
                             </div>
 
                             <div class="form-group">
@@ -35,16 +45,6 @@
                                         @endforeach
                                     @endif
                                 </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="body">Body</label>
-                                <textarea class="form-control" id="body" name="body" rows="5"></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" name="status">
                             </div>
 
                             <button type="submit" class="btn btn-primary">Create</button>

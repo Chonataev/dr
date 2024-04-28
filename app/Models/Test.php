@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contents extends Model
+class Test extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'title',
         'themes_id',
-        'body',
+        'user_id',
         'status',
     ];
 

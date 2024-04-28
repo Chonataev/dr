@@ -40,7 +40,8 @@ class ThemesController extends Controller
         // Создание записи в базе данных
         Theme::create([
             'title' => $request->title,
-            'user_id' => auth()->user()->id, // или любой другой способ определения пользователя
+            'user_id' => auth()->user()->id,
+            'description' => $request->description, // или любой другой способ определения пользователя
             'theme_id' => $request->theme_id
         ]);
 

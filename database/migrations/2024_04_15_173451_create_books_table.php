@@ -4,15 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContentsTable extends Migration
+class CreateBooksTable extends Migration
 {
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('type');
+            $table->string('file_url');
             $table->unsignedBigInteger('themes_id');
-            $table->binary('body');
             $table->string('status');
             $table->timestamps();
 
@@ -22,6 +23,6 @@ class CreateContentsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('contents');
+        Schema::dropIfExists('books');
     }
 }

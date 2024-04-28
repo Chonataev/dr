@@ -3,20 +3,15 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <div>Content List </div>
-                        <div><a href="{{ route('themes.create') }}">create</a></div>
+                        <div>Темы</div>
+                        <div>
+                            <a href="{{ route('themes.create') }}" class="btn btn-primary">create</a>
+                        </div>
                     </div>
-
                     <div class="card-body">
-                        @if (session('success'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('success') }}
-                            </div>
-                        @endif
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -31,6 +26,7 @@
                                 <tr>
                                     <td>{{ $theme->title }}</td>
                                     <td>{{ $theme->name }}</td>
+                                    <td>{{ $theme->description }}</td>
                                     <td>{{ $theme->status }}</td>
                                     <td>
                                         <a href="{{ route('themes.show', $theme) }}" class="btn btn-primary">View</a>

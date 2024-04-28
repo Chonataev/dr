@@ -11,13 +11,22 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
-            // Аутентификация успешна
+        if (Auth::attempt($credentials))
+        {
             $user = Auth::user();
-            // Успешная аутентификация
-            session(['success' => 'Успешная аутентификация']);
+            if( $user->role === 1 )
+            {
+                return redirect()->intended('/')->with('success', 'Вы успешно вошли в систему!');
+            }
+            else if( $user->role === 2 )
+            {
+                return redirect()->intended('/')->with('success', 'Вы успешно вошли в систему!');
+            }
 
-            return response()->redirectTo('home');
+            // Аутентификация не удалась
+            return back()->withErrors([
+                'email' => 'Неверные учетные данные.',
+            ]);
 
         }
 
