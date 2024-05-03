@@ -14,7 +14,8 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 ">
+
                         @if(session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
@@ -26,12 +27,94 @@
                                 {{ session('error') }}
                             </div>
                         @endif
-                        <div class="card">
-                            <div class="card-body">
-                                <h3>Lorem ipsum title </h3>
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores repellendus molestiae exercitationem voluptatem tempora quo dolore nostrum dolor consequuntur itaque, alias fugit. Architecto rerum animi velit, beatae corrupti quos nam saepe asperiores aliquid quae culpa ea reiciendis ipsam numquam laborum aperiam. Id tempore consequuntur velit vitae corporis, aspernatur praesentium ratione!</p>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Механика</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Термодинамика и статистическая физика</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Электромагнетизм</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Оптика</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Квантовая физика</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ядерная физика</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Астрофизика и космология</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Кристаллография и материаловедение</h5>
+                                        <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        </a><a href="#" class="btn btn-primary">Теория...</a>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

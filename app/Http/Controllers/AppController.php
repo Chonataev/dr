@@ -10,15 +10,10 @@ use Illuminate\Http\Request;
 
 class AppController extends Controller
 {
-
-    public function getThemes()
-    {
-        return Theme::all();
-    }
-
     public function index()
     {
-        return view('app.index');
+        $themes = Theme::all();
+        return view('app.index', ['themes' => $themes]);
     }
 
     public function forums()
@@ -36,13 +31,27 @@ class AppController extends Controller
         return view('app.book-details');
     }
 
-    public function docs()
+    public function literature()
     {
-        return view('app.docs');
+        return view('app.literature');
     }
 
-    public function test()
+    public function teacher()
+    {
+        return view('app.teacher');
+    }
+
+    public function test($test_id)
     {
         return view('app.test');
+    }
+
+    public function testResult()
+    {
+        return view('app.test');
+    }
+
+    public function profile(){
+        return view('app.profile');
     }
 }

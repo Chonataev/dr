@@ -20,17 +20,22 @@ Route::prefix('/')->group(function () {
     Route::get('book/title/{title_id}', [AppController::class, 'bookDetails'])->name('book_details');
 
     Route::get('forums', [AppController::class, 'forums'])->name('forums');
-    Route::get('forums/{forum_id}', [AppController::class, 'forumDetails'])->name('forum_details');
+    Route::get('forums/forum/{forum_id}', [AppController::class, 'forumDetails'])->name('forum_details');
 
-    Route::get('docs', [AppController::class, 'docs'])->name('docs');
+    Route::get('literature', [AppController::class, 'literature'])->name('literature');
+
+    Route::get('teacher', [AppController::class, 'teacher'])->name('teacher');
+
     Route::get('test/{test_id}', [AppController::class, 'test'])->name('test');
+    Route::get('test/result', [AppController::class, 'testResult'])->name('test_result');
 
+    Route::prefix('profile/')->group(function () {
+        Route::get('', [AppController::class, 'profile'])->name('profile');
+    });
 });
 
 Route::prefix('/auth')->group(function () {
-
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
-
     Route::post('/login', [AuthController::class, 'login'])->name('login');
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -38,9 +43,7 @@ Route::prefix('/auth')->group(function () {
 
 
 
-Route::prefix('admin')->middleware('auth')->group(function ()
-{
-
+Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('tests/{test}/questions/create', [QuestionController::class, 'create'])->name('questions.create');
     Route::get('tests/{test}/questions/index', [QuestionController::class, 'index'])->name('questions.index');
     Route::post('questions/store/{test_id}', [QuestionController::class, 'store'])->name('questions.store');

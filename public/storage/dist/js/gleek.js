@@ -15,6 +15,10 @@
         direction: "ltr" //"ltr" = Left to Right; "rtl" = Right to Left
     });
 
+    new quixSettings({
+        sidebarPosition: "fixed"
+    });
+
 
 })(jQuery);
 

@@ -11,6 +11,7 @@
     <!-- Chartist -->
     <link rel="stylesheet" href="{{ asset('/storage/dist/plugins/chartist/css/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/storage/dist/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css') }}">
+    <link rel="stylesheet" href="{{ asset('/storage/dist//plugins/tables/css/datatable/dataTables.bootstrap4.min.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{ asset('/storage/dist/css/style.css') }}" rel="stylesheet">
 </head>
@@ -35,17 +36,22 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('main') }}">
-                            <span class="navbar-text lead">Home</span>
+                            <span class="navbar-text lead">Башкы бет</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('forums') }}">
-                            <span class="navbar-text lead">Forums</span>
+                            <span class="navbar-text lead">Форум</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('docs') }}">
-                            <span class="navbar-text lead">Docs</span>
+                        <a class="nav-link" href="{{ route('literature') }}">
+                            <span class="navbar-text lead">Адабияттар</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('teacher') }}">
+                            <span class="navbar-text lead">Мугалим</span>
                         </a>
                     </li>
                 </ul>
@@ -56,19 +62,25 @@
             <ul class="clearfix">
                 <li class="icons dropdown">
                     <div class="user-img c-pointer position-relative"   data-toggle="dropdown">
-                        <span class="activity active"></span>
-                        <img src="{{ asset('/storage/dist/images/user/1.png') }}" height="40" width="40" alt="">
+                        <img src="{{ asset('/storage/dist/images/student.png') }}" height="40" width="40" alt="">
 
                     </div>
                     <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                         <div class="dropdown-content-body">
                             <ul>
                                 <li>
+                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-login"></i> <span>Login</span></a>
+                                </li>
+                                <li>
                                     <a href="{{ asset('app-profile.html') }}"><i class="icon-user"></i> <span>Profile</span></a>
                                 </li>
                                 <hr class="my-2">
                                 <li>
-                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-key"></i> <span>Logout</span></a>
+                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-list"></i> <span>Test results</span></a>
+                                </li>
+                                <hr class="my-2">
+                                <li>
+                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-logout"></i> <span>Logout</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -88,22 +100,26 @@
 <div class="nk-sidebar">
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
-            <li class="nav-label">Topics in physics</li>
-            @foreach ($themes as $theme)
-                <li>
-                    <a class="has-arrow" href="" aria-expanded="false">
-                        <i class="icon-notebook menu-icon"></i>
-                        <span class="nav-text">{{$theme->title}}</span>
-                    </a>
-                    @if(isset($theme['themes']))
-                        <ul aria-expanded="false">
-                            @foreach($theme['themes'] as $subtheme)
-                                <li class="nav-label">{{ $subtheme->title }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-                </li>
-            @endforeach
+            <li class="nav-label">Темалар тизмеси</li>
+           @if(count($themes)>0)
+                @foreach ($themes as $theme)
+                    <li>
+                        <a class="has-arrow" href="" aria-expanded="false">
+                            <i class="icon-notebook menu-icon"></i>
+                            <span class="nav-text">{{$theme->title}}</span>
+                        </a>
+                        @if(isset($theme['themes']))
+                            <ul aria-expanded="false">
+                                @foreach($theme['themes'] as $subtheme)
+                                    <li class="nav-label">{{ $subtheme->title }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                @endforeach
+           @else
+                <li class="nav-label text-warning">Тема жок</li>
+           @endif
         </ul>
 
     </div>
@@ -132,5 +148,10 @@
 <script src="{{ asset('/storage/dist/js/styleSwitcher.js') }}"></script>
 
 <script src="{{ asset('/storage/dist/js/dashboard/dashboard-1.js') }}"></script>
+
+<script src="{{ asset('/storage/dist//plugins/tables/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/storage/dist/plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('/storage/dist/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>
+
 </body>
 </html>
