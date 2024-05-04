@@ -5,7 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit Question</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <h5> Суроо озгортуу </h5>
+                        <div>
+                            <a href="{{ url()->previous() }}" class="">
+                                <button class="btn btn-primary">< Артка</button>
+                            </a>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -23,26 +30,70 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label for="question">Question</label>
-                                <input type="text" class="form-control" id="question" name="question" value="{{ $question->question }}">
+                                <label for="question">Суроо</label>
+                                <textarea class="summernote" id="question" name="question">
+                                    {!! $question->question !!}
+                                </textarea>
                             </div>
 
-                            @foreach($answers as $answer)
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="answer{{ $answer->id }}" name="answers[{{ $answer->id }}]" value="{{ $answer->content }}">
+                            <div class="row">
+                                <div class=" form-group col-md-6">
+                                    <label for="answer1">а</label>
+                                    <input type="text" class="form-control rounded" id="answer{{ $answers[0]->id }}" name="answers[{{ $answers[0]->id }}]" value="{{ $answers[0]->content }}">
                                 </div>
-                            @endforeach
+                                <div class="form-group col-md-6">
+                                    <label for="answer2">б</label>
+                                    <input type="text" class="form-control rounded" id="answer{{ $answers[1]->id }}" name="answers[{{ $answers[1]->id }}]" value="{{ $answers[1]->content }}">
+                                </div>
+                            </div>
 
-                            <div class="form-group">
-                                <label for="correct_answer">Correct Answer</label>
-                                <select class="form-control" id="correct_answer" name="correct_answer">
-                                    @foreach($answers as $answer)
-                                        <option value="{{ $answer->id }}" @if($question->correct_answer == $answer->id) selected @endif>{{ $answer->content }}</option>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="answer3">с</label>
+                                    <input type="text" class="form-control rounded" id="answer{{ $answers[2]->id }}" name="answers[{{ $answers[2]->id }}]" value="{{ $answers[2]->content }}">
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="answer4">д</label>
+                                    <input type="text" class="form-control rounded" id="answer{{ $answers[3]->id }}" name="answers[{{ $answers[3]->id }}]" value="{{ $answers[3]->content }}">
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-5 p-0">
+                                <label for="correct_answer">Туура жоопту тандоо</label>
+                                <select class="form-control rounded" id="correct_answer" name="questions[1][correct_answer]">
+                                    @foreach($answers as $index => $answer)
+                                        @if($answer->right)
+                                            <option selected value="{{ $answer->id }}">
+                                                @if($index == 0)
+                                                    а
+                                                @elseif($index == 1)
+                                                    б
+                                                @elseif($index == 2)
+                                                    с
+                                                @elseif($index == 3)
+                                                    д
+                                                @endif
+                                            </option>
+                                        @else
+                                            <option value="{{ $answer->id }}">
+                                                @if($index == 0)
+                                                    а
+                                                @elseif($index == 1)
+                                                    б
+                                                @elseif($index == 2)
+                                                    с
+                                                @elseif($index == 3)
+                                                    д
+                                                @endif
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <div class="col-md-12 p-0 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Сактоо</button>
+                            </div>
                         </form>
                     </div>
                 </div>

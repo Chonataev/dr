@@ -22,6 +22,8 @@ class ThemesController extends Controller
     public function create(): Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
         $themes = Theme::all();
+        $themes = $themes->where('theme_id', null);
+
         return view('admin.themes.create', compact('themes'));
     }
 
@@ -77,6 +79,7 @@ class ThemesController extends Controller
             'title' => $request->title,
             'theme_id' => $request->theme_id,
             'status' => $request->status,
+            'description' => $request->description
         ]);
 
         // Редирект на страницу с подтверждением или другую страницу

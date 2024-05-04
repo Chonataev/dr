@@ -13,7 +13,7 @@ class CreateBooksTable extends Migration
             $table->string('title');
             $table->string('type');
             $table->string('file_url');
-            $table->unsignedBigInteger('themes_id');
+            $table->unsignedBigInteger('themes_id')->default(null)->nullable();
             $table->string('status');
             $table->timestamps();
 

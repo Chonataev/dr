@@ -53,6 +53,8 @@ class QuestionController extends Controller
      */
     public function store($test_id, Request $request): RedirectResponse
 {
+    $test = Test::findOrFail($test_id);
+
     $request->validate([
         'questions.*.question' => 'required|string',
         'questions.*.answers.*' => 'required|string',
@@ -85,7 +87,7 @@ class QuestionController extends Controller
         }
     }
 
-    return redirect()->route('tests.index')->with('success', 'Questions created successfully!');
+    return redirect()->route('questions.index', ['test' => $test])->with('success', 'Вопросы успешно созданы!');
 }
 
     /**

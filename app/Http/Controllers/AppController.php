@@ -13,6 +13,7 @@ class AppController extends Controller
     public function index()
     {
         $themes = Theme::all();
+
         return view('app.index', ['themes' => $themes]);
     }
 

@@ -5,7 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Create Question</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <h5> Суроо кошуу </h5>
+                        <div>
+                            <a href="{{ url()->previous() }}" class="">
+                                <button class="btn btn-primary">< Артка</button>
+                            </a>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -24,91 +31,53 @@
                             <div id="questions-container">
                                 <div class="question-block">
                                     <div class="form-group">
-                                        <label for="question">Question</label>
-                                        <input type="text" class="form-control" id="question" name="questions[1][question]">
+                                        <label for="question">Суроо</label>
+                                        <textarea class="summernote" id="question" name="questions[1][question]">
+                                            Суроо...
+                                        </textarea>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="answer1">Answer 1</label>
-                                        <input type="text" class="form-control" id="answer1" name="questions[1][answers][1]">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="answer2">Answer 2</label>
-                                        <input type="text" class="form-control" id="answer2" name="questions[1][answers][2]">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="answer3">Answer 3</label>
-                                        <input type="text" class="form-control" id="answer3" name="questions[1][answers][3]">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="answer4">Answer 4</label>
-                                        <input type="text" class="form-control" id="answer4" name="questions[1][answers][4]">
+                                    <div class="row">
+                                        <div class=" form-group col-md-6">
+                                            <label for="answer1">а</label>
+                                            <input type="text" class="form-control rounded" id="answer1" name="questions[1][answers][1]">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="answer2">б</label>
+                                            <input type="text" class="form-control rounded" id="answer2" name="questions[1][answers][2]">
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label for="correct_answer">Correct Answer</label>
-                                        <select class="form-control" id="correct_answer" name="questions[1][correct_answer]">
-                                            <option value="1">Answer 1</option>
-                                            <option value="2">Answer 2</option>
-                                            <option value="3">Answer 3</option>
-                                            <option value="4">Answer 4</option>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <label for="answer3">с</label>
+                                            <input type="text" class="form-control rounded" id="answer3" name="questions[1][answers][3]">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="answer4">д</label>
+                                            <input type="text" class="form-control rounded" id="answer4" name="questions[1][answers][4]">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-5 p-0">
+                                        <label for="correct_answer">Туура жоопту тандоо</label>
+                                        <select class="form-control rounded" id="correct_answer" name="questions[1][correct_answer]">
+                                            <option value="1">а</option>
+                                            <option value="2">б</option>
+                                            <option value="3">с</option>
+                                            <option value="4">д</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <button id="add-question" type="button" class="btn btn-success">+ Add Another Question</button>
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <div class="col-md-12 p-0 d-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary">Сактоо</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        document.getElementById('add-question').addEventListener('click', function () {
-            var questionsContainer = document.getElementById('questions-container');
-            var questionIndex = questionsContainer.querySelectorAll('.question-block').length + 1;
-
-            var newQuestionBlock = document.createElement('div');
-            newQuestionBlock.classList.add('question-block');
-
-            newQuestionBlock.innerHTML = `
-                <div class="form-group">
-                    <label for="question${questionIndex}">Question</label>
-                    <input type="text" class="form-control" id="question${questionIndex}" name="questions[${questionIndex}][question]">
-                </div>
-
-                <div class="form-group">
-                    <label for="answer${questionIndex}1">Answer 1</label>
-                    <input type="text" class="form-control" id="answer${questionIndex}1" name="questions[${questionIndex}][answers][1]">
-                </div>
-                <div class="form-group">
-                    <label for="answer${questionIndex}2">Answer 2</label>
-                    <input type="text" class="form-control" id="answer${questionIndex}2" name="questions[${questionIndex}][answers][2]">
-                </div>
-                <div class="form-group">
-                    <label for="answer${questionIndex}3">Answer 3</label>
-                    <input type="text" class="form-control" id="answer${questionIndex}3" name="questions[${questionIndex}][answers][3]">
-                </div>
-                <div class="form-group">
-                    <label for="answer${questionIndex}4">Answer 4</label>
-                    <input type="text" class="form-control" id="answer${questionIndex}4" name="questions[${questionIndex}][answers][4]">
-                </div>
-
-                <div class="form-group">
-                    <label for="correct_answer${questionIndex}">Correct Answer</label>
-                    <select class="form-control" id="correct_answer${questionIndex}" name="questions[${questionIndex}][correct_answer]">
-                        <option value="1">Answer 1</option>
-                        <option value="2">Answer 2</option>
-                        <option value="3">Answer 3</option>
-                        <option value="4">Answer 4</option>
-                    </select>
-                </div>
-            `;
-
-            questionsContainer.appendChild(newQuestionBlock);
-        });
-    </script>
 @endsection

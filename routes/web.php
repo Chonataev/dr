@@ -37,6 +37,7 @@ Route::prefix('/')->group(function () {
 Route::prefix('/auth')->group(function () {
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });
@@ -46,19 +47,22 @@ Route::prefix('/auth')->group(function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('tests/{test}/questions/create', [QuestionController::class, 'create'])->name('questions.create');
     Route::get('tests/{test}/questions/index', [QuestionController::class, 'index'])->name('questions.index');
+
     Route::post('questions/store/{test_id}', [QuestionController::class, 'store'])->name('questions.store');
     Route::get('questions/edit/{test_id}', [QuestionController::class, 'edit'])->name('questions.edit');
+
     Route::delete('questions/destroy/{question}', [QuestionController::class, 'destroy'])->name('questions.destroy');
     Route::put('questions/update/{question}', [QuestionController::class, 'update'])->name('questions.update');
 
     Route::get('forums/{forum}/disqus/create', [DisqusController::class, 'create'])->name('disqus.create');
     Route::get('forums/{forum}/disqus/index', [DisqusController::class, 'index'])->name('disqus.index');
+
     Route::post('disqus/store/{test_id}', [DisqusController::class, 'store'])->name('disqus.store');
     Route::get('disqus/edit/{test_id}', [DisqusController::class, 'edit'])->name('disqus.edit');
     Route::delete('disqus/destroy/{disqus}', [DisqusController::class, 'destroy'])->name('disqus.destroy');
     Route::put('disqus/update/{question}', [DisqusController::class, 'update'])->name('disqus.update');
 
-
+    Route::redirect('', 'admin/themes');
     Route::resource('themes', ThemesController::class);
     Route::resource('tests', TestController::class);
     Route::resource('forums', ForumController::class);

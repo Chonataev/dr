@@ -3,15 +3,19 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Content Details</div>
-
+                    <div class="d-flex justify-content-between p-3">
+                        <h4 class="card-header"> Маалымат </h4>
+                        <a href="/admin/themes" >
+                            <button class="btn btn-primary">Артка </button>
+                        </a>
+                    </div>
                     <div class="card-body">
-                        <p><strong>Title:</strong> {{ $theme->title }}</p>
-                        <p><strong>Status:</strong> {{ $theme->status ? 'Active' : 'Inactive' }}</p>
-                        <p><strong>Created At:</strong> {{ $theme->created_at }}</p>
-                        <p><strong>Updated At:</strong> {{ $theme->updated_at }}</p>
+                        <p><strong>Тема:</strong> {{ $theme->title }}</p>
+                        <p><strong>Статус:</strong> {{ $theme->status ? 'Active' : 'Inactive' }}</p>
+                        <p><strong>Тузулгон датасы:</strong> {{ $theme->created_at }}</p>
+                        <p><strong>Текст:</strong> {!! $theme->description !!}</p>
                         <!-- Дополнительные детали, если нужно -->
                     </div>
                 </div>

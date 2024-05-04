@@ -6,50 +6,47 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <div>Вопросы</div>
+                        <h4> Суроолор </h4>
                         <div>
-                            <a href="{{ route('forums.create') }}" class="btn btn-primary">create</a>
+                            <a href="{{ route('forums.create') }}" class="btn btn-primary"> Суроо тузуу </a>
                         </div>
                     </div>
 
                     <div class="card-body">
 
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Body</th>
-                                <th>Owner</th>
-                                <th>Importance</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                                <th>Comments</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($forum as $item)
+                        @if(count($forums) > 0)
+                            <table class="table">
+                                <thead>
                                 <tr>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ $item->body }}</td>
-                                    <td>{{ $item->owner }}</td>
-                                    <td>{{ $item->importance }}</td>
-                                    <td>{{ $item->status }}</td>
-                                    <td>
-                                        <a href="{{ route('forums.show', $item) }}" class="btn btn-primary">View</a>
-                                        <a href="{{ route('forums.edit', $item) }}" class="btn btn-secondary">Edit</a>
-                                        <form action="{{ route('forums.destroy', $item) }}" method="POST" style="display: inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('disqus.edit', $item->id) }}" class="btn btn-secondary">Коммнтарии</a>
-                                    </td>
+                                    <th>Темасы</th>
+                                    <th>Суроо</th>
+                                    <th>Автор</th>
+                                    <th>Action</th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach ($forums as $item)
+                                    <tr>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{!! $item->body !!}</td>
+                                        <td>{{ $item->owner }}</td>
+                                        <td class="d-flex">
+                                            <a href="{{ route('forums.show', $item) }}" class="btn btn-primary mr-1">Коруу</a>
+                                            <a href="{{ route('forums.edit', $item) }}" class="btn btn-warning mr-1">Озгортуу</a>
+                                            <form action="{{ route('forums.destroy', $item) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Очуруу</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        @else
+                            <p>Азырча маалымат жок </p>
+                        @endif
+
                     </div>
                 </div>
             </div>

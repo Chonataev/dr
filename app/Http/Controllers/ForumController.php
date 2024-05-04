@@ -11,15 +11,15 @@ class ForumController extends Controller
 {
     public function index()
     {
-        $forum = Forum::all();
-        if ( !$forum->isEmpty() )
+        $forums = Forum::all();
+        if ( !$forums->isEmpty() )
         {
-            foreach ($forum as $item) {
+            foreach ($forums as $item) {
                 $item->owner = User::find($item->user_id)->name;
                 unset($item->user_id);
             }
         }
-        return view('admin.forums.index', compact('forum'));
+        return view('admin.forums.index', compact('forums'));
     }
 
     public function create()
@@ -60,7 +60,6 @@ class ForumController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'importance' => 'required|integer',
             'status' => 'required|string',
         ]);
         $forum = Forum::find($forum->id); // Предположим, что у вас есть переменная $id, содержащая идентификатор форума
@@ -68,7 +67,6 @@ class ForumController extends Controller
         $forum->update([
             'title' => $request->title,
             'body' => $request->body,
-            'importance' => $request->importance,
             'status' => $request->status,
         ]);
 

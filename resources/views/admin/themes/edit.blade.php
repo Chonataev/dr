@@ -5,7 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit Content</div>
+                    <div class="d-flex justify-content-between p-3">
+                        <h4 class="card-header"> Озгортуу </h4>
+                        <a href="/admin/themes" >
+                            <button class="btn btn-primary">Артка </button>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -23,28 +28,47 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Тема</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $theme->title) }}">
                             </div>
 
                             <div class="form-group">
-                                <label for="theme_id">Theme</label>
+                                <label for="theme_id">Негизги темалар</label>
                                 <select class="form-control" id="theme_id" name="theme_id">
-                                    <option value="{{ $theme->id }}> {{ $theme->title }}</option>
+                                    <option  value="">Темалар</option>
                                     @if (isset ($themes))
-                                        @foreach ($themes as $theme)
-                                            <option value="{{ $theme->id }}">{{ $theme->title }}</option>
+                                        @foreach ($themes as $th)
+                                            @if($theme->theme_id == $th->id)
+                                                <option selected value="{{ $th->id }}">{{ $th->title }}</option>
+                                            @else
+                                                <option value="{{ $th->id }}">{{ $th->title }}</option>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="status">Status</label>
-                                <input type="text" class="form-control" id="status" name="status" value="{{ old('status', $theme->status) }}">
+                                <label for="status">Статус</label>
+                                <select class="form-control" id="status" name="status">
+                                    @if($theme->status == 1)
+                                        <option selected value="{{ $theme->status }}"> Активный </option>
+                                        <option value="0"> Неактивный </option>
+                                    @else
+                                        <option value="1"> Активный </option>
+                                        <option selected value="{{ $theme->status }}"> Неактивный </option>
+                                    @endif
+                                </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <div class="form-group">
+                                <label for="body">Description</label>
+                                <textarea class="summernote" id="description" name="description">
+                                    {!! $theme->description !!}
+                                </textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Сактоо</button>
                         </form>
                     </div>
                 </div>

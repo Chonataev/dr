@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -101,25 +102,29 @@
     <div class="nk-nav-scroll">
         <ul class="metismenu" id="menu">
             <li class="nav-label">Темалар тизмеси</li>
-           @if(count($themes)>0)
+
+            @if(count($themes) > 0)
                 @foreach ($themes as $theme)
-                    <li>
-                        <a class="has-arrow" href="" aria-expanded="false">
-                            <i class="icon-notebook menu-icon"></i>
-                            <span class="nav-text">{{$theme->title}}</span>
-                        </a>
-                        @if(isset($theme['themes']))
+                    @if(count($theme->themes) > 0)
+                        <li class="mega-menu mega-menu-sm">
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="icon-globe-alt menu-icon"></i>
+                                <span class="nav-text">{{$theme->title}}</span>
+                            </a>
                             <ul aria-expanded="false">
-                                @foreach($theme['themes'] as $subtheme)
-                                    <li class="nav-label">{{ $subtheme->title }}</li>
-                                @endforeach
+                                <li><a href="./layout-blank.html">{{ $theme->title }}</a></li>
+                            @foreach($theme->themes as $subTheme)
+                                <li><a href="./layout-blank.html">{{ $subTheme->title }}</a></li>
+                            @endforeach
                             </ul>
-                        @endif
-                    </li>
+                        </li>
+                    @else
+                        <li><a href="./layout-blank.html">{{$theme->title}}</a></li>
+                    @endif
                 @endforeach
-           @else
-                <li class="nav-label text-warning">Тема жок</li>
-           @endif
+            @else
+                <li class="nav-label text-warning">Тема отсутствует</li>
+            @endif
         </ul>
 
     </div>

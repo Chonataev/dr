@@ -6,18 +6,19 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <div>
-                            <a href="{{ route('forums.index') }}"><<- Back</a>
-                        </div>
-                        <div>
-                            {{ $forum->title }}
-                        </div>
-                        <div>
-                            <a href="{{ route('disqus.create', $forum->id) }}">Add Disqus ->></a>
-                        </div>
+                        <h4 class="card-header"> Маалымат </h4>
+                        <a href="/admin/forums" >
+                            <button class="btn btn-primary">Артка </button>
+                        </a>
                     </div>
 
                     <div class="card-body">
+
+                        <ul>
+                            <li> <strong>Тема</strong>: {{ $forum->title }} </li>
+                            <li> <strong>Суроо</strong>: {!! $forum->body !!} </li>
+                        </ul>
+
                         @if (!empty($disqus))
                             <table class="table">
                                 <thead>

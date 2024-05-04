@@ -12,7 +12,7 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->integer('test_id');
-            $table->string('question');
+            $table->text('question');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

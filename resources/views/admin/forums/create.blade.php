@@ -3,9 +3,14 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Create Content</div>
+                    <div class="d-flex justify-content-between p-3">
+                        <h4 class="card-header"> Суроо тузуу </h4>
+                        <a href="/admin/forums" >
+                            <button class="btn btn-primary">Артка </button>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -22,16 +27,18 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" name="title">
+                                <label for="title">Суроонун темасы</label>
+                                <input type="text" class="form-control rounded" id="title" name="title">
                             </div>
 
                             <div class="form-group">
-                                <label for="body">Body</label>
-                                <textarea class="form-control" id="body" name="body" rows="5"></textarea>
+                                <label for="body"> Суроо </label>
+                                <textarea class="summernote" id="body" name="body">
+                                    Текст...
+                                </textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary">Сактоо</button>
                         </form>
                     </div>
                 </div>

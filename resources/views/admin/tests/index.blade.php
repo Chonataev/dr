@@ -6,9 +6,9 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <div>Тесты</div>
+                        <h4>Тесттер</h4>
                         <div>
-                            <a href="{{ route('tests.create') }}" class="btn btn-primary">create</a>
+                            <a href="{{ route('tests.create') }}" class="btn btn-primary">Жаны кошуу</a>
                         </div>
                     </div>
 
@@ -20,7 +20,7 @@
                                 <th>Title</th>
                                 <th>Owner</th>
                                 <th>Тема</th>
-                                <th>Status</th>
+                                <th>Статус</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -32,12 +32,12 @@
                                     <td>{{ $item->theme_title }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>
-                                        <a href="{{ route('questions.index', ['test' => $item]) }}" class="btn btn-secondary">Коруу</a>
-                                        <a href="{{ route('tests.edit', $item) }}" class="btn btn-secondary">Edit</a>
+                                        <a href="{{ route('questions.index', ['test' => $item]) }}" class="btn btn-primary">Коруу</a>
+                                        <a href="{{ route('tests.edit', $item) }}" class="btn btn-warning">Озгортуу</a>
                                         <form action="{{ route('tests.destroy', $item) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="btn btn-danger">Очуруу</button>
                                         </form>
                                     </td>
                                 </tr>

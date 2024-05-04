@@ -5,7 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Create Tests</div>
+                    <div class="d-flex justify-content-between p-3">
+                        <h4 class="card-header"> Жаны тузуу </h4>
+                        <a href="/admin/tests" >
+                            <button class="btn btn-primary"> Артка </button>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         @if ($errors->any())
@@ -23,13 +28,14 @@
 
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" class="form-control" id="title" name="title">
+                                <input type="text" class="form-control rounded" id="title" name="title">
                             </div>
 
                             <div class="form-group">
-                                <label for="theme_id">Theme</label>
-                                <select class="form-control" id="theme_id" name="themes_id">
+                                <label for="theme_id">Темалар</label>
+                                <select class="form-control rounded" id="theme_id" name="themes_id">
                                     @if (isset ($themes))
+                                        <option value="">Темалар</option>
                                         @foreach ($themes as $theme)
                                             <option value="{{ $theme->id }}">{{ $theme->title }}</option>
                                         @endforeach
@@ -37,7 +43,7 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary">Сактоо</button>
                         </form>
                     </div>
                 </div>

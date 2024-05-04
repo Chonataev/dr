@@ -23,8 +23,14 @@ class BooksController extends Controller
     private function addThemeTitleToBooks($books)
     {
         foreach ($books as $book) {
-            $theme = $this->getThemeById($book->themes_id);
-            $book['theme_title'] = $theme->title;
+            if($book->themes_id){
+                $theme = $this->getThemeById($book->themes_id);
+                $book['theme_title'] = $theme->title;
+            }
+            else{
+                $book['theme_title'] = '';
+            }
+
         }
         return $books;
     }
@@ -55,7 +61,6 @@ class BooksController extends Controller
             'title' => 'required|string|max:255',
             'type' => 'required|string',
             'file_url' => 'required',
-            'theme_id' => 'required',
         ]);
 
         $file = $request->file('file_url');
@@ -72,11 +77,6 @@ class BooksController extends Controller
         return redirect()->route('books.index')->with('success', 'Content created successfully!');
     }
 
-    public function show(Books $book): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
-    {
-        return view('admin.books.show', compact('book'));
-    }
-
     public function edit(Books $book): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $themes = Theme::all();
@@ -89,7 +89,6 @@ class BooksController extends Controller
             'title' => 'required|string|max:255',
             'type' => 'required|string',
             'file_url' => 'required',
-            'theme_id' => 'required',
             'status' => 'required',
         ]);
 
