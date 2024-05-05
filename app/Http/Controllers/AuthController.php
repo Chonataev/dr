@@ -12,19 +12,35 @@ class AuthController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.login');
+        if (Auth::check()) {
+            // Получаем текущего аутентифицированного пользователя
+            $user = Auth::user();
+
+            // Проверяем роль пользователя и перенаправляем соответственно
+            if ($user->role === 1) {
+                return redirect()->intended('admin/themes');
+            }
+            elseif($user->role === 2){
+                return redirect()->route('main');
+            }
+            else {
+                abort(403);
+            }
+        }else{
+            return view('auth.login');
+        }
     }
 
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials))
-        {
+        if (Auth::attempt($credentials)) {
             $user = Auth::user();
+
             if( $user->role === 1 )
             {
-                return redirect()->intended('/')->with('success', 'Вы успешно вошли в систему!');
+                return redirect()->intended('/admin')->with('success', 'Вы успешно вошли в систему!');
             }
             else if( $user->role === 2 )
             {
@@ -35,13 +51,10 @@ class AuthController extends Controller
             return back()->withErrors([
                 'email' => 'Неверные учетные данные.',
             ]);
-
+        }else{
+            session(['error' => 'Неверный email или пароль']);
+            return redirect()->route('login')->with('error', 'Неверный email или пароль');
         }
-
-        // Неверный email или пароль
-        session(['error' => 'Неверный email или пароль']);
-        return response()->redirectTo('auth.login');
-
     }
 
     public function logout()

@@ -21,9 +21,8 @@ class AuthMiddleware
             } else {
                 abort(403);
             }
+        }else{
+            return redirect()->route('login');
         }
-
-        // Если пользователь не аутентифицирован, перенаправляем его на страницу входа
-        return redirect()->route('login');
     }
 }

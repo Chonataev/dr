@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Books;
+use App\Models\Test;
 use App\Models\Theme;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -29,7 +31,20 @@ class AppController extends Controller
 
     public function bookDetails($book_title_id)
     {
-        return view('app.book-details');
+        $theme = Theme::find($book_title_id);
+
+        $examples = Books::where('themes_id', $book_title_id)->where('type', 1)->get();
+        $exercises = Books::where('themes_id', $book_title_id)->where('type', 2)->get();
+        $literatures = Books::where('themes_id', $book_title_id)->where('type', 3)->get();
+        $tests = Test::where('themes_id', $book_title_id)->get();
+
+        return view('app.book-details', [
+            'theme'=>$theme,
+            'examples'=>$examples,
+            'exercises'=>$exercises,
+            'literatures'=>$literatures,
+            'tests'=>$tests
+        ]);
     }
 
     public function literature()

@@ -4,13 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
-        return view('auth.register');
+        if (Auth::check()) {
+            // Получаем текущего аутентифицированного пользователя
+            $user = Auth::user();
+
+            // Проверяем роль пользователя и перенаправляем соответственно
+            if ($user->role === 1) {
+                return redirect()->intended('admin/themes');
+            }
+            elseif($user->role === 2){
+                return redirect()->route('main');
+            }
+            else {
+                abort(403);
+            }
+        }else{
+            return view('auth.register');
+        }
     }
 
     public function register(Request $request)
@@ -26,7 +43,7 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 12, // Устанавливаем роль по умолчанию
+            'role' => 2, // Устанавливаем роль по умолчанию
         ]);
 
         if ($user) {

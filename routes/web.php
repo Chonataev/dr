@@ -15,7 +15,7 @@ use App\Http\Controllers\BooksController;
 
 
 Route::prefix('/')->group(function () {
-    Route::get('', [AppController::class, 'index'])->name('main');
+    Route::redirect('', 'home');
     Route::get('home', [AppController::class, 'index'])->name('main');
     Route::get('book/title/{title_id}', [AppController::class, 'bookDetails'])->name('book_details');
 
@@ -29,7 +29,7 @@ Route::prefix('/')->group(function () {
     Route::get('test/{test_id}', [AppController::class, 'test'])->name('test');
     Route::get('test/result', [AppController::class, 'testResult'])->name('test_result');
 
-    Route::prefix('profile/')->group(function () {
+    Route::prefix('profile/')->middleware(\App\Http\Middleware\UserMiddleware::class)->group(function () {
         Route::get('', [AppController::class, 'profile'])->name('profile');
     });
 });
@@ -44,7 +44,7 @@ Route::prefix('/auth')->group(function () {
 
 
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware('auth')->middleware(\App\Http\Middleware\AdminMiddleware::class)->group(function () {
     Route::get('tests/{test}/questions/create', [QuestionController::class, 'create'])->name('questions.create');
     Route::get('tests/{test}/questions/index', [QuestionController::class, 'index'])->name('questions.index');
 

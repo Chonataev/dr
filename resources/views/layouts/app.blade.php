@@ -69,20 +69,19 @@
                     <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                         <div class="dropdown-content-body">
                             <ul>
-                                <li>
-                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-login"></i> <span>Login</span></a>
-                                </li>
-                                <li>
-                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-user"></i> <span>Profile</span></a>
-                                </li>
-                                <hr class="my-2">
-                                <li>
-                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-list"></i> <span>Test results</span></a>
-                                </li>
-                                <hr class="my-2">
-                                <li>
-                                    <a href="{{ asset('app-profile.html') }}"><i class="icon-logout"></i> <span>Logout</span></a>
-                                </li>
+                                @if(Auth::check())
+                                    <li>
+                                        <a href="{{ asset('/profile') }}"><i class="icon-user"></i> <span>Profile</span></a>
+                                    </li>
+                                    <hr class="my-2">
+                                    <li>
+                                        <a href="{{ asset('/auth/logout') }}"><i class="icon-logout"></i> <span>Logout</span></a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{ asset('/auth/login') }}"><i class="icon-login"></i> <span>Login</span></a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -112,14 +111,14 @@
                                 <span class="nav-text">{{$theme->title}}</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><a href="./layout-blank.html">{{ $theme->title }}</a></li>
+                                <li><a href="/book/title/{{$theme->id}}">{{ $theme->title }}</a></li>
                             @foreach($theme->themes as $subTheme)
-                                <li><a href="./layout-blank.html">{{ $subTheme->title }}</a></li>
+                                <li><a href="/book/title/{{$subTheme->id}}">{{ $subTheme->title }}</a></li>
                             @endforeach
                             </ul>
                         </li>
                     @else
-                        <li><a href="./layout-blank.html">{{$theme->title}}</a></li>
+                        <li><a href="/book/title/{{$theme->id}}">{{$theme->title}}</a></li>
                     @endif
                 @endforeach
             @else
