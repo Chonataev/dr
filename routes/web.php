@@ -29,17 +29,21 @@ Route::prefix('/')->group(function () {
     Route::get('test/{test_id}', [AppController::class, 'test'])->name('test');
     Route::get('test/result', [AppController::class, 'testResult'])->name('test_result');
 
-    Route::prefix('profile/')->middleware(\App\Http\Middleware\UserMiddleware::class)->group(function () {
+    Route::prefix('user')->middleware('auth')->group(function () {
+        Route::post('', [AppController::class, 'forumStore'])->name('user.forum.store');
+    });
+
+    Route::prefix('profile')->middleware(\App\Http\Middleware\UserMiddleware::class)->group(function () {
         Route::get('', [AppController::class, 'profile'])->name('profile');
     });
 });
 
-Route::prefix('/auth')->group(function () {
-    Route::post('/register', [RegisterController::class, 'register'])->name('register');
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
-    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::prefix('auth')->group(function () {
+    Route::post('register', [RegisterController::class, 'register'])->name('register');
+    Route::post('login', [AuthController::class, 'login'])->name('login');
+    Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
 

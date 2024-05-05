@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Books;
+use App\Models\Forum;
+use App\Models\Question;
 use App\Models\Test;
 use App\Models\Theme;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AppController extends Controller
 {
@@ -21,12 +25,30 @@ class AppController extends Controller
 
     public function forums()
     {
-        return view('app.forums');
+        $forums = Forum::all();
+
+        return view('app.forums', ['forums'=>$forums]);
     }
 
     public function forumDetails($forum_id)
     {
+        $forum = Forum::find($forum_id);
         return view('app.forums-details');
+    }
+
+    public function forumStore(Request $request){
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ]);
+        Forum::create([
+            'title' => $request->title,
+            'body' => $request->body,
+            'user_id' => auth()->user()->id, // или любой другой способ определения пользователя
+            'importance' => 1
+        ]);
+
+        return redirect()->route('forums')->with('success', 'Forum created successfully!');
     }
 
     public function bookDetails($book_title_id)
@@ -49,7 +71,9 @@ class AppController extends Controller
 
     public function literature()
     {
-        return view('app.literature');
+        $literatures = Books::where('themes_id', null)->where('type', 3)->get();
+
+        return view('app.literature', ["literatures"=>$literatures]);
     }
 
     public function teacher()
@@ -59,7 +83,10 @@ class AppController extends Controller
 
     public function test($test_id)
     {
-        return view('app.test');
+        $test = Test::find($test_id);
+        $questions = Question::where('test_id', $test_id)->get();
+
+        return view('app.test', ['test'=>$test, 'questions'=>$questions]);
     }
 
     public function testResult()
@@ -68,6 +95,8 @@ class AppController extends Controller
     }
 
     public function profile(){
-        return view('app.profile');
+        $user = Auth::user();
+
+        return view('app.profile', ['user'=>$user]);
     }
 }

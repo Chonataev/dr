@@ -41,7 +41,7 @@
                                             {{$index+1}}.
                                             {{ $example->title }}
                                             <a class="ml-5" href="{{url($example->file_url)}}">
-                                                <button class="btn mb-1 btn-success">
+                                                <button class="btn mb-1 btn-primary">
                                                     Ачуу
                                                     <span class="btn-icon-right">
                                                         <i class="fa fa-star"></i>
@@ -49,7 +49,7 @@
                                                 </button>
                                             </a>
                                             <a href="{{url($example->file_url)}}" download>
-                                                <button class="btn mb-1 btn-success">
+                                                <button class="btn mb-1 btn-primary">
                                                     Кочуруу
                                                     <span class="btn-icon-right">
                                                         <i class="fa fa-download"></i>
@@ -74,7 +74,7 @@
                                             {{$index+1}}.
                                             {{ $exercise->title }}
                                             <a class="ml-5" href="{{url($exercise->file_url)}}">
-                                                <button class="btn mb-1 btn-success">
+                                                <button class="btn mb-1 btn-primary">
                                                     Ачуу
                                                     <span class="btn-icon-right">
                                                         <i class="fa fa-star"></i>
@@ -82,7 +82,7 @@
                                                 </button>
                                             </a>
                                             <a href="{{url($exercise->file_url)}}" download>
-                                                <button class="btn mb-1 btn-success">
+                                                <button class="btn mb-1 btn-primary">
                                                     Кочуруу
                                                     <span class="btn-icon-right">
                                                         <i class="fa fa-download"></i>
@@ -107,7 +107,7 @@
                                             {{$index+1}}.
                                             {{ $literature->title }}
                                             <a class="ml-5" href="{{url($literature->file_url)}}">
-                                                <button class="btn mb-1 btn-success">
+                                                <button class="btn mb-1 btn-primary">
                                                     Ачуу
                                                     <span class="btn-icon-right">
                                                         <i class="fa fa-star"></i>
@@ -115,7 +115,7 @@
                                                 </button>
                                             </a>
                                             <a href="{{url($literature->file_url)}}" download>
-                                                <button class="btn mb-1 btn-success">
+                                                <button class="btn mb-1 btn-primary">
                                                     Кочуруу
                                                     <span class="btn-icon-right">
                                                         <i class="fa fa-download"></i>
@@ -140,7 +140,7 @@
                                                 {{$index+1}}.
                                                 {{ $test->title }}
                                                 <a class="ml-5" href="/test/{{$test->id}}">
-                                                    <button class="btn mb-1 btn-success">
+                                                    <button class="btn mb-1 btn-primary">
                                                         Ачуу
                                                         <span class="btn-icon-right">
                                                         <i class="fa fa-star"></i>

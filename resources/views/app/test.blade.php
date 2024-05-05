@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <!--**********************************
             Content body start
         ***********************************-->
@@ -10,101 +9,41 @@
 
         <div class="container-fluid">
 
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Test name</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-12">
+            <div class="col-lg-8 m-auto">
                 <form class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h5> {{ $test->title }} </h5>
+                        <div>
+                            <a href="{{ url()->previous() }}" class="">
+                                <button class="btn btn-primary">< Артка</button>
+                            </a>
+                        </div>
+                    </div>
                     <div class="card-body">
-                        <div class="basic-form">
-                            <h4 class="card-title">Question 1</h4>
-                            <p class="text-muted">Use the class if you want the checkboxes to appear on the same line</p>
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio1" class="form-check-input" value="">Option 1</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio1"  class="form-check-input" value="">Option 2</label>
-                                </div>
-                                <div class="form-check form-check-inline disabled">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio1"  class="form-check-input" value="">Option 3</label>
-                                </div>
-                                <div class="form-check form-check-inline disabled">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio1"  class="form-check-input" value="">Option 4</label>
-                                </div>
-                            </div>
-                        </div>
+                        <form action="">
 
-                        <div class="basic-form">
-                            <h4 class="card-title">Question 2</h4>
-                            <p class="text-muted">Use the class if you want the checkboxes to appear on the same line</p>
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio2" class="form-check-input" value="">Option 1</label>
+                            @foreach($questions as $index => $question)
+                                <div class="basic-form p-3 bg-light mb-3">
+                                    <p> <strong>{{$index+1}}-суроо.</strong> {!!$question->question!!}</p>
+                                    <div class="form-group mt-5">
+                                        @foreach($question->answers as $answer)
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                <input type="radio" name="" class="form-check-input" value="">{{ $answer->content }}</label>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio2"  class="form-check-input" value="">Option 2</label>
-                                </div>
-                                <div class="form-check form-check-inline disabled">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio2"  class="form-check-input" value="">Option 3</label>
-                                </div>
-                                <div class="form-check form-check-inline disabled">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio2"  class="form-check-input" value="">Option 4</label>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
 
-                        <div class="basic-form">
-                            <h4 class="card-title">Question 3</h4>
-                            <p class="text-muted">Use the class if you want the checkboxes to appear on the same line</p>
-                            <div class="form-group">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio3" class="form-check-input" value="">Option 1</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio3"  class="form-check-input" value="">Option 2</label>
-                                </div>
-                                <div class="form-check form-check-inline disabled">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio3"  class="form-check-input" value="">Option 3</label>
-                                </div>
-                                <div class="form-check form-check-inline disabled">
-                                    <label class="form-check-label">
-                                    <input type="radio" name="optradio3"  class="form-check-input" value="">Option 4</label>
-                                </div>
+                            <div class="basic-form">
+                                <button type="submit" class="btn btn-cancel">Cancel</button>
+                                <button class="btn btn-success">Send</button>
                             </div>
-                        </div>
 
-                        <div class="basic-form">
-                            <button type="submit" class="btn btn-cancel">Cancel</button>
-                            <button class="btn btn-success">Send</button>
-                        </div>
+                        </form>
                     </div>
                 </form>
-            </div>
-
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4>Result</h4>
-                        <span> 20 дан 10 туура </span>
-                    </div>
-                </div>
             </div>
         </div>
 

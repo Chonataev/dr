@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('/storage/dist//plugins/tables/css/datatable/dataTables.bootstrap4.min.css')}}">
     <!-- Custom Stylesheet -->
     <link href="{{ asset('/storage/dist/css/style.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('/storage/dist/plugins/summernote/dist/summernote.css') }}" rel="stylesheet">
 </head>
 <body style="height: 100vh">
 <!--**********************************
@@ -156,6 +158,9 @@
 <script src="{{ asset('/storage/dist//plugins/tables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/storage/dist/plugins/tables/js/datatable/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('/storage/dist/plugins/tables/js/datatable-init/datatable-basic.min.js') }}"></script>
+
+<script src="{{ asset('/storage/dist//plugins/summernote/dist/summernote.min.js') }}"></script>
+<script src="{{ asset('/storage/dist//plugins/summernote/dist/summernote-init.js') }}"></script>
 
 </body>
 </html>

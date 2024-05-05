@@ -125,18 +125,18 @@ class QuestionController extends Controller
 
         // Обновление или добавление ответов
         $answersData = $request->input('answers');
-        foreach ($answersData as $index => $answerData) {
+        foreach ($answersData as $key => $answerData) {
             // Если ответ существует, обновляем его
-            $answer = $question->answers->where('id', $index)->first();
+            $answer = $question->answers->where('id', $key)->first();
             if ($answer) {
                 $answer->content = $answerData;
-                $answer->right = ($index == $request->input('correct_answer')); // Проверяем правильность ответа
+                $answer->right = ($key == $request->input('questions')['1']['correct_answer']); // Проверяем правильность ответа
                 $answer->save();
             } else {
                 // Если ответа не существует, создаем новый
                 $question->answers()->create([
                     'content' => $answerData,
-                    'right' => ($index === $request->input('correct_answer'))
+                    'right' => ($key === $request->input('correct_answer'))
                 ]);
             }
         }

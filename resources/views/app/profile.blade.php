@@ -29,7 +29,7 @@
                                     <div class="media align-items-center mb-4">
                                         <img class="mr-3" src="{{ asset('/storage/dist/images/student.png')}}" width="80" height="80" alt="">
                                         <div class="media-body">
-                                            <h3 class="mb-0">Асан Асанов</h3>
+                                            <h3 class="mb-0">{{$user->name}}</h3>
                                             <p class="text-muted mb-0">Кыргызстан</p>
                                         </div>
                                     </div>
@@ -37,7 +37,11 @@
                                     <ul class="card-profile__info">
                                         <li class="mb-1">
                                             <strong class="text-dark mr-4">Email:</strong>
-                                            <span> asan@gmail.com </span>
+                                            <span> {{$user->email}} </span>
+                                        </li>
+                                        <li class="mb-1">
+                                            <strong class="text-dark mr-4">Тузулгон датасы:</strong>
+                                            <span> {{$user->created_at}} </span>
                                         </li>
                                     </ul>
                                 </div>
