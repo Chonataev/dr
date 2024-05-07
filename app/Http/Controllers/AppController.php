@@ -71,9 +71,9 @@ class AppController extends Controller
 
     public function literature()
     {
-        $literatures = Books::where('themes_id', null)->where('type', 3)->get();
+        $files = Books::where('themes_id', null)->where('type', 3)->get();
 
-        return view('app.literature', ["literatures"=>$literatures]);
+        return view('app.literature', compact('files'));
     }
 
     public function teacher()
@@ -98,5 +98,20 @@ class AppController extends Controller
         $user = Auth::user();
 
         return view('app.profile', ['user'=>$user]);
+    }
+
+    public function downloadFile($fileName)
+    {
+        // Получаем полный путь к файлу
+        $filePath = public_path('uploads/' . $fileName);
+
+        // Проверяем существование файла
+        if (file_exists($filePath)) {
+            // Отправляем файл пользователю
+            return response()->download($filePath);
+        }
+
+        // Если файл не найден, возвращаем ошибку 404
+        abort(404);
     }
 }

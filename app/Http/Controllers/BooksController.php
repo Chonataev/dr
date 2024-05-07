@@ -35,13 +35,6 @@ class BooksController extends Controller
         return $books;
     }
 
-    // Метод для сохранения файла
-    private function saveFile($file)
-    {
-        $fileName = Str::random(20) . '.' . $file->getClientOriginalExtension();
-        return $file->storeAs('uploads', $fileName);
-    }
-
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $books = Books::all();
@@ -55,27 +48,33 @@ class BooksController extends Controller
         return view('admin.books.create', compact('themes'));
     }
 
+
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'required|string',
-            'file_url' => 'required',
+            'file_url' => 'required|file',
         ]);
 
         $file = $request->file('file_url');
-        $filePath = $this->saveFile($file);
+        $fileName = Str::random(20) . '.' . $file->getClientOriginalExtension();
 
+        // Перемещаем файл в директорию public/uploads
+        $file->move(public_path('uploads'), $fileName);
+
+        // Создаем запись в базе данных для файла
         $book = new Books();
         $book->title = $request->title;
         $book->type = $request->type;
-        $book->file_url = $filePath;
+        $book->file_url = $fileName;
         $book->themes_id = $request->theme_id;
         $book->status = true;
         $book->save();
 
         return redirect()->route('books.index')->with('success', 'Content created successfully!');
     }
+
 
     public function edit(Books $book): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
@@ -88,22 +87,31 @@ class BooksController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'type' => 'required|string',
-            'file_url' => 'required',
-            'status' => 'required',
         ]);
 
-        $file = $request->file('file_url');
-        $filePath = $this->saveFile($file);
+        // Проверяем, загружен ли новый файл
+        if ($request->hasFile('file_url')) {
+            $file = $request->file('file_url');
+            $fileName = Str::random(20) . '.' . $file->getClientOriginalExtension();
 
+            // Перемещаем файл в директорию public/uploads
+            $file->move(public_path('uploads'), $fileName);
+
+            // Обновляем имя файла в модели
+            $book->file_url = $fileName;
+        }
+
+        // Обновляем остальные поля модели
         $book->title = $request->title;
         $book->type = $request->type;
-        $book->file_url = $filePath;
         $book->themes_id = $request->theme_id;
         $book->status = $request->status;
-        $book->update($request->all());
+        $book->save();
 
         return redirect()->route('books.index')->with('success', 'Content updated successfully!');
     }
+
+
 
     public function destroy(Books $book): RedirectResponse
     {

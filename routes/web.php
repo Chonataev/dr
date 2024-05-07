@@ -28,6 +28,7 @@ Route::prefix('/')->group(function () {
 
     Route::get('test/{test_id}', [AppController::class, 'test'])->name('test');
     Route::get('test/result', [AppController::class, 'testResult'])->name('test_result');
+    Route::get('/download/{fileName}', [AppController::class, 'downloadFile'])->name('download');
 
     Route::prefix('user')->middleware('auth')->group(function () {
         Route::post('', [AppController::class, 'forumStore'])->name('user.forum.store');
