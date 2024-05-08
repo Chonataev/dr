@@ -26,13 +26,16 @@ Route::prefix('/')->group(function () {
 
     Route::get('teacher', [AppController::class, 'teacher'])->name('teacher');
 
-    Route::get('test/{test_id}', [AppController::class, 'test'])->name('test');
-    Route::get('test/result', [AppController::class, 'testResult'])->name('test_result');
-    Route::get('/download/{fileName}', [AppController::class, 'downloadFile'])->name('download');
+    Route::prefix('')->middleware('auth')->group(function () {
+        Route::get('test/{test_id}', [AppController::class, 'test'])->name('test');
+        Route::get('test/result/{result_test_id}', [AppController::class, 'testResult'])->name('test_result');
+        Route::post('user/test/controller', [AppController::class, 'testController'])->name('user.test.controller');
 
-    Route::prefix('user')->middleware('auth')->group(function () {
-        Route::post('', [AppController::class, 'forumStore'])->name('user.forum.store');
+        Route::post('forum/store', [AppController::class, 'forumStore'])->name('user.forum.store');
+        Route::post('forum/comment/store', [AppController::class, 'forumCommentStore'])->name('user.forum.comment.store');
     });
+
+    Route::get('download/{fileName}', [AppController::class, 'downloadFile'])->name('download');
 
     Route::prefix('profile')->middleware(\App\Http\Middleware\UserMiddleware::class)->group(function () {
         Route::get('', [AppController::class, 'profile'])->name('profile');

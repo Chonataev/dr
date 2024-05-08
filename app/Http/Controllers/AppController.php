@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Answer;
 use App\Models\Books;
+use App\Models\Disqus;
 use App\Models\Forum;
 use App\Models\Question;
+use App\Models\Results;
+use App\Models\StudentTestAnswer;
 use App\Models\Test;
 use App\Models\Theme;
 use Illuminate\Contracts\View\Factory;
@@ -33,7 +36,32 @@ class AppController extends Controller
     public function forumDetails($forum_id)
     {
         $forum = Forum::find($forum_id);
-        return view('app.forums-details');
+        $discussions = Disqus::where('forum_id', $forum_id)->get();
+
+        return view(
+            'app.forums-details',
+            [
+                'forum'=>$forum,
+                'discussions'=>$discussions
+            ]
+        );
+    }
+
+    public function forumCommentStore(Request $request){
+        $request->validate([
+            'forum_id' => 'required|integer',
+            'comment' => 'required|string',
+        ]);
+
+        Disqus::create([
+            'forum_id'=>$request->forum_id,
+            'disqus_id' => null,
+            'user_id' => Auth::id(),
+            'body' => $request->comment,
+            'status' => 1,
+        ]);
+
+        return redirect()->route('forum_details', ['forum_id' => $request->forum_id]);
     }
 
     public function forumStore(Request $request){
@@ -89,15 +117,89 @@ class AppController extends Controller
         return view('app.test', ['test'=>$test, 'questions'=>$questions]);
     }
 
-    public function testResult()
+    public function testController(Request $request)
     {
-        return view('app.test');
+        $user_id = Auth::id();
+        $test_id = $request->test_id;
+        $answers = $request->answers;
+        $trueAnswers = 0;
+        $questions = Question::where('test_id', $test_id)->get();
+
+
+        if($answers){
+            foreach ($questions as $question){
+                foreach($question->answers as $ans){
+                    if($answers[$question->id] && $ans->right && $answers[$question->id] == $ans->id){
+                        $trueAnswers++;
+                    }
+                }
+            }
+            $testResult = Results::create([
+                'answer' => implode('/', [$trueAnswers, count($questions)]),
+                'test_id' => $test_id,
+                'user_id' => $user_id,
+                'status' => '1',
+            ]);
+
+            foreach ($answers as $key => $answer) {
+                StudentTestAnswer::create([
+                    'result_test_id' => $testResult->id,
+                    'user_id' => $user_id,
+                    'question_id' => $key,
+                    'answer_id' => $answer
+                ]);
+            }
+
+            return redirect()->route('test_result', ['result_test_id' => $testResult->id]);
+        }
+
+        return redirect()->route('test', ['test_id' => $test_id]);
+    }
+
+    public function testResult($result_test_id)
+    {
+        $user_id = Auth::id();
+        $testResult = Results::where('id', $result_test_id)->where('user_id', $user_id)->first();
+        $test = Test::find($testResult->test_id);
+        $questions = Question::where('test_id', $test->id)->get();
+        $userAnswers = StudentTestAnswer::where('result_test_id', $testResult->id)->where('user_id', $user_id)->get();
+
+        if($testResult && $test && $questions && $userAnswers){
+            foreach ($questions as $index => $question){
+                foreach ($userAnswers as $userAnswer){
+                    if($question->id == $userAnswer->question_id){
+                        $questions[$index]->user_answer_id = $userAnswer->answer_id;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return view(
+            'app.testResult',
+            [
+                'test'=>$test,
+                'testResult'=>$testResult,
+                'questions'=>$questions
+            ]
+        );
     }
 
     public function profile(){
         $user = Auth::user();
+        $results = Results::where('user_id', $user->id)->get();
 
-        return view('app.profile', ['user'=>$user]);
+        foreach ($results as $index => $result) {
+            $results[$index]->test_title = Test::find($result->test_id)->title;
+        }
+
+        return view(
+            'app.profile',
+            [
+                'user' => $user,
+                'results' => $results
+            ]
+        );
     }
 
     public function downloadFile($fileName)

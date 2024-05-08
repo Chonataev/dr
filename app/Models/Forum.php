@@ -19,5 +19,9 @@ class Forum extends Model
         'status',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     // Добавьте здесь отношения с другими моделями, если это необходимо
 }

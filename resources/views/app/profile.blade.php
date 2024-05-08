@@ -66,27 +66,22 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td> 1 </td>
-                                                    <td> Асан Асанов </td>
-                                                    <td> Физика элементарных частиц </td>
-                                                    <td> 10/20 </td>
-                                                    <td> 03-12-2024 10:13 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> 1 </td>
-                                                    <td> Асан Асанов </td>
-                                                    <td> Физика элементарных частиц </td>
-                                                    <td> 10/20 </td>
-                                                    <td> 03-12-2024 10:13 </td>
-                                                </tr>
-                                                <tr>
-                                                    <td> 1 </td>
-                                                    <td> Асан Асанов </td>
-                                                    <td> Физика элементарных частиц </td>
-                                                    <td> 10/20 </td>
-                                                    <td> 03-12-2024 10:13 </td>
-                                                </tr>
+                                                @if(count($results) > 0)
+                                                    @foreach($results as $index => $result)
+                                                        <tr>
+                                                            <td> {{$index + 1}} </td>
+                                                            <td> {{$user->name}} </td>
+                                                            <td> {{$result->test_title}} </td>
+                                                            <td>
+                                                                <a href="{{route('test_result', ['result_test_id' => $result->id])}}">
+                                                                    {{$result->answer}}
+                                                                    <i class="fa fa-link ml-2"></i>
+                                                                </a>
+                                                            </td>
+                                                            <td> {{$result->created_at}}  </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
                                             </tbody>
                                             <tfoot>
                                                 <tr>

@@ -41,18 +41,7 @@
                             <div class="d-flex justify-content-between p-3">
                                 <h4 class="card-header"> Түшүнбөгөн тема боюнча коомчулуктан жардам суроо </h4>
                             </div>
-
                             <div class="card-body">
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-
                                 <form method="POST" action="{{ route('user.forum.store') }}">
                                     @csrf
 
@@ -64,8 +53,8 @@
                                     <div class="form-group">
                                         <label for="body"> Суроо </label>
                                         <textarea class="summernote" id="body" name="body">
-                                        Текст...
-                                    </textarea>
+                                            Текст...
+                                        </textarea>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Сактоо</button>

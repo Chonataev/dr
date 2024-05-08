@@ -10,7 +10,7 @@
         <div class="container-fluid">
 
             <div class="col-lg-8 m-auto">
-                <form class="card">
+                <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h5> {{ $test->title }} </h5>
                         <div>
@@ -20,30 +20,31 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="">
-
+                        <form method="POST" action="{{ route('user.test.controller')}}">
+                            @csrf
+                            <input type="hidden" value="{{$test->id}}" name="test_id">
                             @foreach($questions as $index => $question)
                                 <div class="basic-form p-3 bg-light mb-3">
-                                    <p> <strong>{{$index+1}}-суроо.</strong> {!!$question->question!!}</p>
-                                    <div class="form-group mt-5">
+                                    <p><strong>{{$index+1}}-суроо.</strong> {!!$question->question!!}</p>
+                                    <ul class="mt-3 pl-3">
                                         @foreach($question->answers as $answer)
-                                            <div class="form-check form-check-inline">
+                                            <li>
                                                 <label class="form-check-label">
-                                                <input type="radio" name="" class="form-check-input" value="">{{ $answer->content }}</label>
-                                            </div>
+                                                    <input type="radio" name="answers[{{$question->id}}]" id="{{$answer->id}}" class="form-check-input" value="{{$answer->id}}">{{ $answer->content }}
+                                                </label>
+                                            </li>
                                         @endforeach
-                                    </div>
+                                    </ul>
                                 </div>
                             @endforeach
 
                             <div class="basic-form">
-                                <button type="submit" class="btn btn-cancel">Cancel</button>
-                                <button class="btn btn-success">Send</button>
+                                <button type="submit" class="btn btn-success">Текшеруу</button>
                             </div>
 
                         </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
 

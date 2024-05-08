@@ -43,7 +43,7 @@
                                                 <td>{{$file->title}}</td>
                                                 <td>{{$file->file_url}}</td>
                                                 <td>
-                                                    <a href="{{ route('download', ['fileName' => $file->file_url]) }}">Скачать файл</a>
+                                                    <a href="{{ route('download', ['fileName' => $file->file_url]) }}">Файлды кочуруу</a>
                                                 </td>
                                             </tr>
                                         @endforeach

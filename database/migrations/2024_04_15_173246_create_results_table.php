@@ -10,7 +10,7 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->string('ansver');
+            $table->string('answer');
             $table->unsignedBigInteger('test_id');
             $table->unsignedBigInteger('user_id');
             $table->string('status');
