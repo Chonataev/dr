@@ -14,7 +14,7 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Body</th>
+                                <th>Суроо</th>
                             </tr>
                             </thead>
                             <tbody>

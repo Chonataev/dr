@@ -62,7 +62,7 @@
 
 
                             <div class="form-group">
-                                <label for="status">Status</label>
+                                <label for="status">Статус</label>
                                 <input type="text" class="form-control" id="status" name="status" value="{{ old('status', $book->status) }}">
                             </div>
 

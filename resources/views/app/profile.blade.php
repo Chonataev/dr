@@ -83,15 +83,6 @@
                                                     @endforeach
                                                 @endif
                                             </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <th> № </th>
-                                                    <th> Студент </th>
-                                                    <th> Тесттин темасы </th>
-                                                    <th> Жыйынтык </th>
-                                                    <th> Тапшарган дата </th>
-                                                </tr>
-                                            </tfoot>
                                         </table>
                                     </div>
 

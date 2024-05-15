@@ -28,7 +28,7 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Тесттин темасы</label>
                                 <input type="text" class="form-control rounded" id="title" name="title" value="{{ old('title', $test->title) }}">
                             </div>
 

@@ -28,16 +28,16 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Суроонун темасы</label>
                                 <input type="text" class="form-control rounded" id="title" name="title" value="{{$forum->title}}">
                             </div>
 
                             <div class="form-group">
-                                <label for="body"></label>
+                                <label for="body">Суроо</label>
                                 <textarea class="summernote" id="body" name="body" rows="5">{!! $forum->body !!}</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="status">status</label>
+                                <label for="status">Статус</label>
                                 <select class="form-control rounded" id="title" name="status">
                                     <option value="true" {{ $forum->status == 'true' ? 'selected' : '' }}>Активный</option>
                                     <option value="false" {{ $forum->status == 'false' ? 'selected' : '' }}>Неактивный</option>

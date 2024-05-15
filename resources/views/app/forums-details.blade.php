@@ -15,7 +15,7 @@
                                 <h4 class="card-title mb-2">{{$forum->title}}</h4>
                                 <small class="mb-2">{{$forum->user->name}}</small>
                                 <div class="border p-3 rounded">
-                                    {{$forum->body}}
+                                    {!! $forum->body!!}
                                 </div>
                                 <small class="m-2"> {{$forum->created_at}} </small>
                             </div>

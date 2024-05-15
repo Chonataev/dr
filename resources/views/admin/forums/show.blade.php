@@ -23,22 +23,22 @@
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th>Disqus ID</th>
-                                    <th>Disqus Body</th>
-                                    <th>Action</th>
+                                    <th>№</th>
+                                    <th>Суроо</th>
+                                    <th>Иш-аракет</th>
                                     <!-- Additional fields from the disqus table, if any -->
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($disqus as $item)
+                                @foreach ($disqus as $index=>$item)
                                     <tr>
-                                        <td>{{ $item->disqus_id }}</td>
-                                        <td>{{ $item->body }}</td>
+                                        <td>{{ $index+1 }}</td>
+                                        <td>{!! $item->body !!}</td>
                                         <td>
                                             <form action="{{ route('disqus.destroy', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger">Очуруу</button>
                                             </form>
                                         </td>
                                     </tr>

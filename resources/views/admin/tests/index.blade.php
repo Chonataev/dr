@@ -17,11 +17,11 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Owner</th>
-                                <th>Тема</th>
+                                <th>Темасы</th>
+                                <th>Автору</th>
+                                <th>Касы темага байланыштуу</th>
                                 <th>Статус</th>
-                                <th>Action</th>
+                                <th>Иш-аракет</th>
                             </tr>
                             </thead>
                             <tbody>

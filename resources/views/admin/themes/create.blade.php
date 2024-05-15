@@ -28,12 +28,12 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Темасы</label>
                                 <input type="text" class="form-control rounded" id="title" name="title">
                             </div>
 
                             <div class="form-group">
-                                <label for="theme_id">Select theme parent</label>
+                                <label for="theme_id"> Кайсы темага караштуу </label>
                                 <select class="form-control rounded" id="theme_id" name="theme_id">
                                     <option value="">Темалар</option>
                                     @if (isset ($themes))
@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="body">Description</label>
+                                <label for="body"> Мазмуну </label>
                                 <textarea class="summernote" id="description" name="description">
                                     Текст...
                                 </textarea>

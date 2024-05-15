@@ -28,12 +28,12 @@
                             @method('PUT')
 
                             <div class="form-group">
-                                <label for="title">Тема</label>
+                                <label for="title">Темасы</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $theme->title) }}">
                             </div>
 
                             <div class="form-group">
-                                <label for="theme_id">Негизги темалар</label>
+                                <label for="theme_id">Кайсы темага караштуу</label>
                                 <select class="form-control" id="theme_id" name="theme_id">
                                     <option  value="">Темалар</option>
                                     @if (isset ($themes))
@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="body">Description</label>
+                                <label for="body">Мазмуну</label>
                                 <textarea class="summernote" id="description" name="description">
                                     {!! $theme->description !!}
                                 </textarea>

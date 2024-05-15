@@ -22,19 +22,19 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="question">Question</label>
+                                <label for="question">Суроо</label>
                                 <input type="text" class="form-control" id="question" name="question">
                             </div>
 
                             <div class="form-group">
-                                <label for="answers">Answers</label>
+                                <label for="answers">Жооп</label>
                                 <input type="text" class="form-control" id="answer1" name="answers[]">
                                 <input type="text" class="form-control" id="answer2" name="answers[]">
                                 <input type="text" class="form-control" id="answer3" name="answers[]">
                                 <input type="text" class="form-control" id="answer4" name="answers[]">
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="submit" class="btn btn-primary">Тузуу</button>
                         </form>
                     </div>
                 </div>

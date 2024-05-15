@@ -21,7 +21,7 @@
                                     <th>Темасы</th>
                                     <th>Суроо</th>
                                     <th>Автор</th>
-                                    <th>Action</th>
+                                    <th>Uш-аракет</th>
                                 </tr>
                                 </thead>
                                 <tbody>

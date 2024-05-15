@@ -19,7 +19,7 @@
                                 <th>Тема</th>
                                 <th>Темага караштуу</th>
                                 <th>Статус</th>
-                                <th>Action</th>
+                                <th>Uш-аракет</th>
                             </tr>
                             </thead>
                             <tbody>

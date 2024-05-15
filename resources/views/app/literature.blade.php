@@ -31,7 +31,7 @@
                                     <tr>
                                         <th>№</th>
                                         <th>Аты</th>
-                                        <th>Title</th>
+                                        <th>Темасы</th>
                                         <th>Кочуруу</th>
                                     </tr>
                                     </thead>
@@ -50,14 +50,6 @@
                                     @endif
 
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>№</th>
-                                        <th>Аты</th>
-                                        <th>Title</th>
-                                        <th>Кочуруу</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>
