@@ -32,7 +32,7 @@
                                         </div>
                                     </div>
 
-                                    <h4 class="mb-3">Мен жонундо</h4>
+                                    <h4 class="mb-3">Мен жөнүндө</h4>
 
                                     <ul class="card-profile__info">
                                         <li class="mb-1">

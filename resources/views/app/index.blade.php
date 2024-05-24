@@ -30,7 +30,7 @@
                                         ФИЗИКА КУРСУ
                                     </div>
                                     <div class="col-md-5 d-flex align-items-center justify-content-center">
-                                        <img width="100%" src="{{asset('/storage/dist/images/books.png')}}" alt="books">
+                                        <img width="80%" src="{{asset('/storage/dist/images/books.png')}}" alt="books">
                                     </div>
                                 </div>
                             </div>
@@ -39,14 +39,17 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
+                                    <div class="col-md-7 d-flex align-items-center justify-content-center display-6" style="color: #1F5692; font-weight: bold;">
+                                        НЕГИЗГИ БӨЛҮКТӨР
+                                    </div>
                                     <div class="col-md-5 d-flex align-items-center justify-content-center">
                                         @if(count($themes)>0)
                                             <ul>
                                                 @foreach($themes as $theme)
                                                     @if($theme->theme_id == null)
-                                                        <li class="mb-3">
+                                                        <li class="mb-4">
                                                             <a href="/book/title/{{$theme->id}}">
-                                                                <button class="btn btn-primary btn-lg">
+                                                                <button class="btn btn-primary btn-lg" style="font-weight: bold; font-size: 25px;">
                                                                     {{$theme->title}}
                                                                 </button>
                                                             </a>
@@ -57,9 +60,6 @@
                                         @else
                                             <p>Жок</p>
                                         @endif
-                                    </div>
-                                    <div class="col-md-7 d-flex align-items-center justify-content-center display-6" style="color: #1F5692; font-weight: bold;">
-                                        НЕГИЗГИ БӨЛҮКТӨР
                                     </div>
                                 </div>
                             </div>

@@ -49,11 +49,11 @@
                                             </ui>
                                         </td>
                                         <td class="align-top"> <!-- Add this cell for the Actions -->
-                                            <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-primary btn-sm">Озгортуу</a>
+                                            <a href="{{ route('questions.edit', $question->id) }}" class="btn btn-primary btn-sm">өзгөртүү</a>
                                             <form action="{{ route('questions.destroy', $question->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Очуруу</button>
+                                                <button type="submit" class="btn btn-danger btn-sm">өчүрүү</button>
                                             </form>
                                         </td>
                                     </tr>

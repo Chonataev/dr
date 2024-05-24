@@ -48,6 +48,6 @@ class DisqusController extends Controller
         $disqus->delete();
 
         $forum_id = $forum->id;
-        return redirect()->route('forums.index', ['forum' => $forum_id])->with('success', 'Суроо ийгиликтүү жаңыртылды!');
+        return redirect()->route('forums.show', $disqus)->with('success', 'Суроо ийгиликтүү очурулду!');
     }
 }

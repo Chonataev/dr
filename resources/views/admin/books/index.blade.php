@@ -40,11 +40,11 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('books.edit', $book) }}" class="btn btn-warning">Озгортуу</a>
+                                                <a href="{{ route('books.edit', $book) }}" class="btn btn-warning">өзгөртүү</a>
                                                 <form action="{{ route('books.destroy', $book) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger">Очуруу</button>
+                                                    <button type="submit" class="btn btn-danger">өчүрүү</button>
                                                 </form>
                                             </td>
                                         </tr>

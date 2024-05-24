@@ -31,12 +31,12 @@
                                         <td>{!! $item->body !!}</td>
                                         <td>{{ $item->owner }}</td>
                                         <td class="d-flex">
-                                            <a href="{{ route('forums.show', $item) }}" class="btn btn-primary mr-1">Коруу</a>
-                                            <a href="{{ route('forums.edit', $item) }}" class="btn btn-warning mr-1">Озгортуу</a>
+                                            <a href="{{ route('forums.show', $item) }}" class="btn btn-primary mr-1">көрүү</a>
+                                            <a href="{{ route('forums.edit', $item) }}" class="btn btn-warning mr-1">өзгөртүү</a>
                                             <form action="{{ route('forums.destroy', $item) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Очуруу</button>
+                                                <button type="submit" class="btn btn-danger">өчүрүү</button>
                                             </form>
                                         </td>
                                     </tr>

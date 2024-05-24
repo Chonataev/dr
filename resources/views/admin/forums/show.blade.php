@@ -38,7 +38,7 @@
                                             <form action="{{ route('disqus.destroy', $item->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Очуруу</button>
+                                                <button type="submit" class="btn btn-danger">өчүрүү</button>
                                             </form>
                                         </td>
                                     </tr>
