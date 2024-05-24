@@ -40,11 +40,11 @@ class AuthController extends Controller
 
             if( $user->role === 1 )
             {
-                return redirect()->intended('/admin')->with('success', 'Вы успешно вошли в систему!');
+                return redirect()->intended('/admin')->with('success', 'Сиз ийгиликтүү кирдиңиз!');
             }
             else if( $user->role === 2 )
             {
-                return redirect()->intended('/')->with('success', 'Вы успешно вошли в систему!');
+                return redirect()->intended('/')->with('success', 'Сиз ийгиликтүү кирдиңиз!');
             }
 
             // Аутентификация не удалась
@@ -53,13 +53,13 @@ class AuthController extends Controller
             ]);
         }else{
             session(['error' => 'Неверный email или пароль']);
-            return redirect()->route('login')->with('error', 'Неверный email или пароль');
+            return redirect()->route('login')->with('error', 'Жараксыз электрондук почта же сырсөз');
         }
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login')->with('success', 'Вы успешно вышли из системы!');
+        return redirect()->route('login')->with('success', 'Сиз ийгиликтүү чыктыңыз!');
     }
 }

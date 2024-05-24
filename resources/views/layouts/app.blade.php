@@ -33,103 +33,108 @@
     <!--**********************************
         Header start
     ***********************************-->
+    <div class="header position-fixed">
+        <div class="header-content clearfix">
 
-        <div class="header">
-            <div class="header-content clearfix">
-
-                <div class="nav-control">
-                    <div class="hamburger">
-                        <span class="toggle-icon"><i class="icon-menu"></i></span>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <ul class="clearfix d-flex align-items-center">
-                        <li class="mr-3" id="main-menu">
-                            <div class="d-flex">
-                                <div class="">
-                                    <a class="nav-link" href="{{ route('main') }}">
-                                        <span class="navbar-text lead">Башкы бет</span>
-                                    </a>
-                                </div>
-                                <div class="">
-                                    <a class="nav-link" href="{{ route('forums') }}">
-                                        <span class="navbar-text lead">Форум</span>
-                                    </a>
-                                </div>
-                                <div class="">
-                                    <a class="nav-link" href="{{ route('literature') }}">
-                                        <span class="navbar-text lead">Адабияттар</span>
-                                    </a>
-                                </div>
-                                <div class="">
-                                    <a class="nav-link" href="{{ route('teacher') }}">
-                                        <span class="navbar-text lead">Мугалим</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="mr-3" id="main-menu-icon">
-                            <div class="c-pointer border px-3 rounded" data-toggle="dropdown">
-                                Меню
-                            </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('main') }}">
-                                                <span class="navbar-text lead">Башкы бет</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('forums') }}">
-                                                <span class="navbar-text lead">Форум</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('literature') }}">
-                                                <span class="navbar-text lead">Адабияттар</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('teacher') }}">
-                                                <span class="navbar-text lead">Мугалим</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-
-
-                        <li class="dropdown">
-                            <div class="c-pointer"   data-toggle="dropdown">
-                                <img src="{{ asset('/storage/dist/images/student.png') }}" height="40" width="40" alt="">
-                            </div>
-                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                                <div class="dropdown-content-body">
-                                    <ul>
-                                        @if(Auth::check())
-                                            <li>
-                                                <a href="{{ asset('/profile') }}"><i class="icon-user"></i> <span>Профиль</span></a>
-                                            </li>
-                                            <hr class="my-2">
-                                            <li>
-                                                <a href="{{ asset('/auth/logout') }}"><i class="icon-logout"></i> <span>Чыгуу</span></a>
-                                            </li>
-                                        @else
-                                            <li>
-                                                <a href="{{ asset('/auth/login') }}"><i class="icon-login"></i> <span>Кируу</span></a>
-                                            </li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="toggle-icon"><i class="icon-menu"></i></span>
                 </div>
             </div>
+            <div class="header-right">
+                <ul class="clearfix d-flex align-items-center">
+                    <li class="mr-3" id="main-menu">
+                        <div class="d-flex">
+                            <div class="">
+                                <a class="nav-link" href="{{ route('main') }}">
+                                    <span class="navbar-text lead">Башкы бет</span>
+                                </a>
+                            </div>
+                            <div class="">
+                                <a class="nav-link" href="{{ route('forums') }}">
+                                    <span class="navbar-text lead">Форум</span>
+                                </a>
+                            </div>
+                            <div class="">
+                                <a class="nav-link" href="{{ route('literature') }}">
+                                    <span class="navbar-text lead">Адабияттар</span>
+                                </a>
+                            </div>
+                            <div class="">
+                                <a class="nav-link" href="{{ route('teacher') }}">
+                                    <span class="navbar-text lead">Мугалим</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="mr-3" id="main-menu-icon">
+                        <div class="c-pointer border px-3 rounded" data-toggle="dropdown">
+                            Меню
+                        </div>
+                        <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                            <div class="dropdown-content-body">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('main') }}">
+                                            <span class="navbar-text lead">Башкы бет</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('forums') }}">
+                                            <span class="navbar-text lead">Форум</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('literature') }}">
+                                            <span class="navbar-text lead">Адабияттар</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('teacher') }}">
+                                            <span class="navbar-text lead">Мугалим</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="dropdown">
+                        <div class="c-pointer"   data-toggle="dropdown">
+                            @if(Auth::check() && Auth::user()->role === 1)
+                                <img src="{{ asset('/storage/dist/images/teacher.png') }}" height="40" width="40" alt="">
+                            @else
+                                <img src="{{ asset('/storage/dist/images/student.png') }}" height="40" width="40" alt="">
+                            @endif
+                        </div>
+                        <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                            <div class="dropdown-content-body">
+                                <ul>
+                                    @if(Auth::check())
+                                        <li>
+                                            <a href="{{ asset('/profile') }}"><i class="icon-user"></i> <span>Профиль</span></a>
+                                        </li>
+                                        <hr class="my-2">
+                                        <li>
+                                            <a href="{{ asset('/auth/logout') }}"><i class="icon-logout"></i> <span>Чыгуу</span></a>
+                                        </li>
+                                    @else
+                                        <li>
+                                            <a href="{{ asset('/auth/login') }}"><i class="icon-login"></i> <span>Кируу</span></a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </div>
+    <div style="height: 5rem; width: 100vw">
+    </div>
 
     <!--**********************************
         Header end ti-comment-alt

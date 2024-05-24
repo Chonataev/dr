@@ -40,7 +40,7 @@ class ForumController extends Controller
             'importance' => 1
         ]);
 
-        return redirect()->route('forums.index')->with('success', 'Forum created successfully!');
+        return redirect()->route('forums.index')->with('success', 'Форум ийгиликтүү түзүлдү!');
     }
 
     public function show(Forum $forum)
@@ -71,13 +71,13 @@ class ForumController extends Controller
         ]);
 
 
-        return redirect()->route('forums.index')->with('success', 'Forum updated successfully!');
+        return redirect()->route('forums.index')->with('success', 'Форум ийгиликтүү жаңыртылды!');
     }
 
     public function destroy(Forum $forum)
     {
         $forum->delete();
 
-        return redirect()->route('forums.index')->with('success', 'Forum deleted successfully!');
+        return redirect()->route('forums.index')->with('success', 'Форум ийгиликтүү өчүрүлдү!');
     }
 }

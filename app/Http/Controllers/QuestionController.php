@@ -87,7 +87,7 @@ class QuestionController extends Controller
         }
     }
 
-    return redirect()->route('questions.index', ['test' => $test])->with('success', 'Вопросы успешно созданы!');
+    return redirect()->route('questions.index', ['test' => $test])->with('success', 'Суроолор ийгиликтүү түзүлдү!');
 }
 
     /**
@@ -142,7 +142,7 @@ class QuestionController extends Controller
         }
 
         $test_id = $question->test_id;
-        return redirect()->route('questions.index', ['test' => $test_id])->with('success', 'Question updated successfully!');
+        return redirect()->route('questions.index', ['test' => $test_id])->with('success', 'Суроо ийгиликтүү жаңыртылды!');
     }
 
     /**
@@ -157,6 +157,6 @@ class QuestionController extends Controller
         $question->delete();
 
         $test_id = $question->test_id;
-        return redirect()->route('questions.index', ['test' => $test_id])->with('success', 'Question updated successfully!');
+        return redirect()->route('questions.index', ['test' => $test_id])->with('success', 'Суроо ийгиликтүү очурулду!');
     }
 }

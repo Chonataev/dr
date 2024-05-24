@@ -48,10 +48,10 @@ class RegisterController extends Controller
 
         if ($user) {
             // Регистрация прошла успешно, перенаправляем на страницу входа с сообщением об успехе
-            return redirect()->route('login')->with('success', 'Регистрация прошла успешно!');
+            return redirect()->route('login')->with('success', 'Каттоо ийгиликтүү аяктады!');
         } else {
             // Если возникли проблемы при создании пользователя, перенаправляем назад с сообщением об ошибке
-            return back()->withErrors(['registration_error' => 'Ошибка при регистрации. Пожалуйста, попробуйте снова.']);
+            return back()->withErrors(['registration_error' => 'Каттоо учурунда ката. Сураныч, кайра аракет кылыңыз.']);
         }
     }
 }

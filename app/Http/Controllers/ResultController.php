@@ -32,7 +32,7 @@ class ResultController extends Controller
         // Создание записи в базе данных
         Result::create($request->all());
 
-        return redirect()->route('results.index')->with('success', 'Result created successfully!');
+        return redirect()->route('results.index')->with('success', 'Натыйжа ийгиликтүү түзүлдү!');
     }
 
     public function show(Result $result)
@@ -59,7 +59,7 @@ class ResultController extends Controller
         // Обновление записи в базе данных
         $result->update($request->all());
 
-        return redirect()->route('results.index')->with('success', 'Result updated successfully!');
+        return redirect()->route('results.index')->with('success', 'Натыйжа ийгиликтүү жаңыртылды!');
     }
 
     public function destroy(Result $result)
@@ -67,6 +67,6 @@ class ResultController extends Controller
         // Удаление записи из базы данных
         $result->delete();
 
-        return redirect()->route('results.index')->with('success', 'Result deleted successfully!');
+        return redirect()->route('results.index')->with('success', 'Натыйжа ийгиликтүү өчүрүлдү!');
     }
 }

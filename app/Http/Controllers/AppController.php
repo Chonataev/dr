@@ -76,7 +76,7 @@ class AppController extends Controller
             'importance' => 1
         ]);
 
-        return redirect()->route('forums')->with('success', 'Forum created successfully!');
+        return redirect()->route('forums')->with('success', 'Форум ийгиликтүү түзүлдү!');
     }
 
     public function bookDetails($book_title_id)

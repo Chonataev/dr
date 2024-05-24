@@ -72,7 +72,7 @@ class BooksController extends Controller
         $book->status = true;
         $book->save();
 
-        return redirect()->route('books.index')->with('success', 'Content created successfully!');
+        return redirect()->route('books.index')->with('success', 'Мазмун ийгиликтүү түзүлдү!');
     }
 
 
@@ -108,7 +108,7 @@ class BooksController extends Controller
         $book->status = $request->status;
         $book->save();
 
-        return redirect()->route('books.index')->with('success', 'Content updated successfully!');
+        return redirect()->route('books.index')->with('success', 'Мазмун ийгиликтүү жаңыртылды!');
     }
 
 
@@ -116,6 +116,6 @@ class BooksController extends Controller
     public function destroy(Books $book): RedirectResponse
     {
         $book->delete();
-        return redirect()->route('books.index')->with('success', 'Content deleted successfully!');
+        return redirect()->route('books.index')->with('success', 'Мазмун ийгиликтүү өчүрүлдү!');
     }
 }

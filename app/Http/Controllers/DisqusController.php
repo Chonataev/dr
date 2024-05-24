@@ -32,7 +32,7 @@ class DisqusController extends Controller
         $disqus->save();
 
         // Редирект на страницу с подробностями форума или куда угодно еще
-        return redirect()->route('forums.show', $disqus->forum_id)->with('success', 'Disqus created successfully!');
+        return redirect()->route('forums.show', $disqus->forum_id)->with('success', 'Суроо ийгиликтүү түзүлдү!');
     }
 
 
@@ -48,6 +48,6 @@ class DisqusController extends Controller
         $disqus->delete();
 
         $forum_id = $forum->id;
-        return redirect()->route('forums.index', ['forum' => $forum_id])->with('success', 'Question updated successfully!');
+        return redirect()->route('forums.index', ['forum' => $forum_id])->with('success', 'Суроо ийгиликтүү жаңыртылды!');
     }
 }

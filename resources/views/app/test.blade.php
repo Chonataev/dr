@@ -46,6 +46,46 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row bg-light rounded py-5">
+                <div class="col">
+                    <div class="card footer-card-list">
+                        <div class="card-body ">
+                            <h5 class="card-title">Байланыш</h5>
+                            <ul class="card-text">
+                                <li class="mb-2"> <strong> Телефон :</strong> 492788</li>
+                                <li class="mb-2"> <strong> Почта :</strong> meerim.imashkyzy@manas.edu.kg</li>
+                                <li class="mb-2"> <strong> WhatsApp :</strong> 01793931609</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card footer-card-list">
+                        <div class="card-body">
+                            <h5 class="card-title">Навигация</h5>
+                            <ul class="card-text">
+                                <li class="mb-2"><a href="{{route('main')}}">Башкы бет</a></li>
+                                <li class="mb-2"><a href="{{route('forums')}}">Форум</a></li>
+                                <li class="mb-2"><a href="{{route('literature')}}">Адабияттар</a></li>
+                                <li class="mb-2"><a href="{{route('teacher')}}">Мугалим</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card footer-card-list">
+                        <div class="card-body">
+                            <h5 class="card-title">Соц. баракчалар</h5>
+                            <ul class="card-text">
+                                <li class="mb-2"> <i class="fa fa-instagram mr-2"></i> instagram</li>
+                                <li class="mb-2"> <i class="fa fa-facebook mr-2"> </i> facebook</li>
+                                <li class="mb-2"> <i class="fa fa-twitter mr-2"></i> twitter</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- #/ container -->

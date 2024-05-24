@@ -49,7 +49,7 @@ class ThemesController extends Controller
 
         // Редирект на страницу с подтверждением или другую страницу
         session(['success' => 'Тема создана!']);
-        return redirect()->route('themes.index')->with('success', 'Theme created successfully!');
+        return redirect()->route('themes.index')->with('success', 'Тема ийгиликтүү түзүлдү!');
     }
 
     public function edit(Theme $theme)
@@ -83,7 +83,7 @@ class ThemesController extends Controller
         ]);
 
         // Редирект на страницу с подтверждением или другую страницу
-        return redirect()->route('themes.index', $theme)->with('success', 'Theme updated successfully!');
+        return redirect()->route('themes.index', $theme)->with('success', 'Тема ийгиликтүү жаңыртылды!');
     }
 
     public function destroy(Theme $theme)
@@ -92,6 +92,6 @@ class ThemesController extends Controller
         $theme->delete();
 
         // Редирект на страницу с подтверждением или другую страницу
-        return redirect()->route('themes.index')->with('success', 'Theme deleted successfully!');
+        return redirect()->route('themes.index')->with('success', 'Тема ийгиликтүү өчүрүлдү!');
     }
 }

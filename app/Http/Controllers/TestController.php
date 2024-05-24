@@ -44,7 +44,7 @@ class TestController extends Controller
             'user_id' => Auth::user()->getAuthIdentifier(),
         ]);
 
-        return redirect()->route('tests.index')->with('success', 'Test created successfully!');
+        return redirect()->route('tests.index')->with('success', 'Сыноо ийгиликтүү түзүлдү!');
     }
 
     public function show(Test $test)
@@ -71,7 +71,7 @@ class TestController extends Controller
         // Обновление записи в базе данных
         $test->update($request->all());
 
-        return redirect()->route('tests.index')->with('success', 'Test updated successfully!');
+        return redirect()->route('tests.index')->with('success', 'Сыноо ийгиликтүү жаңыртылды!');
     }
 
     public function destroy(Test $test)
@@ -79,6 +79,6 @@ class TestController extends Controller
         // Удаление записи из базы данных
         $test->delete();
 
-        return redirect()->route('tests.index')->with('success', 'Test deleted successfully!');
+        return redirect()->route('tests.index')->with('success', 'Сыноо ийгиликтүү өчүрүлдү!');
     }
 }
