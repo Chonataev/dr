@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h5> Колдонуучулар </h5>
@@ -25,11 +25,11 @@
                                 <tr>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->role }}</td>
-                                    <td>{{ $user->status }}</td>
-                                    <td>
+                                    <td>{{ $user->role == 1? 'Мугалим' : 'Студент' }}</td>
+                                    <td>{{ $user->status == 1? 'Активдүү' : 'Активдүү эмес' }}</td>
+                                    <td class="d-flex">
                                         <a href="{{ route('users.edit', $user) }}" class="btn btn-primary">Озгортуу</a>
-                                        <form action="{{ route('users.destroy', $user) }}" method="POST" style="display: inline;">
+                                        <form class="ml-1" action="{{ route('users.destroy', $user) }}" method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Очуруу</button>

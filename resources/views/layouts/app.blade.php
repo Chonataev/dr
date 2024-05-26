@@ -122,7 +122,7 @@
                                         </li>
                                     @else
                                         <li>
-                                            <a href="{{ asset('/auth/login') }}"><i class="icon-login"></i> <span>Кируу</span></a>
+                                            <a href="{{ asset('/auth/login') }}"><i class="icon-login"></i> <span>Кирүү</span></a>
                                         </li>
                                     @endif
                                 </ul>

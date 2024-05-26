@@ -39,17 +39,17 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-7 d-flex align-items-center justify-content-center display-6" style="color: #1F5692; font-weight: bold;">
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center display-6" style="color: #1F5692; font-weight: bold;">
                                         НЕГИЗГИ БӨЛҮКТӨР
                                     </div>
-                                    <div class="col-md-5 d-flex align-items-center justify-content-center">
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center">
                                         @if(count($themes)>0)
                                             <ul>
                                                 @foreach($themes as $theme)
                                                     @if($theme->theme_id == null)
                                                         <li class="mb-4">
                                                             <a href="/book/title/{{$theme->id}}">
-                                                                <button class="btn btn-primary btn-lg" style="font-weight: bold; font-size: 25px;">
+                                                                <button class="px-5 py-3 rounded c-pointer" style="font-weight: bold; font-size: 25px; background: #E1EFFF; border: none; outline: none; color: #1F5692;">
                                                                     {{$theme->title}}
                                                                 </button>
                                                             </a>
@@ -99,6 +99,23 @@
                                 </div>
                             </div>
                         </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 d-flex align-items-center justify-content-center px-5 py-4 flex-column">
+                                            <h1 class="text-center" style="color: #1F5692;">
+                                                Чыныгы билимдин аркасында сиз ар бир жумушта  кайраттуу жана кемчиликсиз болосуз!
+                                            </h1>
+                                            <a class="mt-4" href="{{route('register')}}">
+                                                <button class="rounded rounded px-5 py-3 c-pointer" style="background: #F66B1D; border: none; font-size: 22px; color: white; outline: none;">
+                                                    Катталуу
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
 

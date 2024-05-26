@@ -29,7 +29,7 @@
 
                             <div class="form-group">
                                 <label for="title">Аты</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $book->title) }}">
+                                <input type="text" required class="form-control" id="title" name="title" value="{{ old('title', $book->title) }}">
                             </div>
 
                             <div class="form-group">

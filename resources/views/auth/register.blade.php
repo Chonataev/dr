@@ -22,7 +22,7 @@
                 <div class="form-input-content">
                     <div class="card login-form mb-0">
                         <div class="card-body pt-5">
-                            <h4 class="text-center">Каттодон отуу</h4>
+                            <h4 class="text-center">Каттоодон өтүү</h4>
 
                             <form class="mt-5 mb-5 login-input" action="{{ route('register') }}" method="post">
                                 @csrf
@@ -33,14 +33,14 @@
                                     <input type="email" class="form-control" placeholder="Электрондук почта" name="email" value="{{ old('email') }}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Сыр соз" name="password" required>
+                                    <input type="password" class="form-control" placeholder="Сыр сөз" name="password" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Сыр созду чындоо" name="password_confirmation" required>
+                                    <input type="password" class="form-control" placeholder="Сыр сөзду чындоо" name="password_confirmation" required>
                                 </div>
                                 <button class="btn login-form__btn submit w-100">Катталуу</button>
                             </form>
-                            <p class="mt-5 login-form__footer"><a href="{{ route('login') }}" class="text-primary">Куруу</a></p>
+                            <p class="mt-5 login-form__footer"><a href="{{ route('login') }}" class="text-primary">Кирүү</a></p>
                         </div>
                     </div>
                 </div>

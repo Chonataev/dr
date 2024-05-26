@@ -42,7 +42,7 @@
                                     <div class="basic-form">
                                         <form>
                                             <div class="form-group">
-                                        <textarea class="summernote" id="comment" name="comment">
+                                        <textarea required class="summernote" id="comment" name="comment">
                                             Текст
                                         </textarea>
                                             </div>

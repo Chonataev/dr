@@ -22,7 +22,7 @@
                 <div class="form-input-content">
                     <div class="card login-form mb-0">
                         <div class="card-body pt-5">
-                            <h4 class="text-center">Кируу</h4>
+                            <h4 class="text-center">Кирүү</h4>
 
                             <form class="mt-5 mb-5 login-input"  action="{{ route('login') }}" method="post">
                                 @csrf
@@ -30,11 +30,11 @@
                                     <input type="email" class="form-control" placeholder="Электрондук почта" name="email" value="{{ old('email') }}" required autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Сыр соз" name="password" value="{{ old('password') }}">
+                                    <input type="password" class="form-control" placeholder="Сыр сөз" name="password" value="{{ old('password') }}">
                                 </div>
-                                <button class="btn login-form__btn submit w-100">Кируу</button>
+                                <button class="btn login-form__btn submit w-100">Кирүү</button>
                             </form>
-                            <p class="mt-5 login-form__footer"><a href="{{ route('register') }}" class="text-primary">Каттоодон отуу</a></p>
+                            <p class="mt-5 login-form__footer"><a href="{{ route('register') }}" class="text-primary">Каттоодон өтүү</a></p>
                         </div>
                     </div>
                 </div>

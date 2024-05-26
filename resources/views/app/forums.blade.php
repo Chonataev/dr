@@ -46,12 +46,12 @@
 
                                     <div class="form-group">
                                         <label for="title">Суроонун темасы</label>
-                                        <input type="text" class="form-control rounded" id="title" name="title">
+                                        <input type="text" required class="form-control rounded" id="title" name="title">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="body"> Суроо </label>
-                                        <textarea class="summernote" id="body" name="body">
+                                        <textarea required class="summernote" id="body" name="body">
                                         Текст...
                                     </textarea>
                                     </div>

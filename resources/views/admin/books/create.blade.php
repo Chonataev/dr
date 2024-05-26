@@ -28,7 +28,7 @@
 
                             <div class="form-group">
                                 <label for="title">Аты</label>
-                                <input type="text" class="form-control rounded" id="title" name="title">
+                                <input type="text" required class="form-control rounded" id="title" name="title">
                             </div>
 
                             <div class="form-group">
