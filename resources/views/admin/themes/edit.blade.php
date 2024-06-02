@@ -52,11 +52,11 @@
                                 <label for="status">Статус</label>
                                 <select class="form-control" id="status" name="status">
                                     @if($theme->status == 1)
-                                        <option selected value="{{ $theme->status }}"> Активный </option>
-                                        <option value="0"> Неактивный </option>
+                                        <option selected value="{{ $theme->status }}"> Активдүү </option>
+                                        <option value="0"> Активдүү эмес </option>
                                     @else
-                                        <option value="1"> Активный </option>
-                                        <option selected value="{{ $theme->status }}"> Неактивный </option>
+                                        <option value="1"> Активдүү </option>
+                                        <option selected value="{{ $theme->status }}"> Активдүү эмес </option>
                                     @endif
                                 </select>
                             </div>

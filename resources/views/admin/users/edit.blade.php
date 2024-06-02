@@ -50,9 +50,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="status">Статус</label>
-                                <input type="text" class="form-control rounded" id="status" name="status" value="{{ old('status', $user->status) }}">
+                                <select class="form-control rounded" id="status" name="status">
+                                    <option value="true" {{ $user->status == 'true' ? 'selected' : '' }}>Активдүү</option>
+                                    <option value="false" {{ $user->status == 'false' ? 'selected' : '' }}>Активдүү эмес</option>
+                                </select>
                             </div>
+
 
                             <button type="submit" class="btn btn-primary">Сактоо</button>
                         </form>

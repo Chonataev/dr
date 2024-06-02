@@ -24,7 +24,7 @@
 
                     @if($theme)
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="color: black">
                                 <h4> {{$theme->title}} </h4>
                                 @if($theme->description)
                                     <p>{!! $theme->description !!}</p>

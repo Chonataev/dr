@@ -41,7 +41,7 @@
                                         </li>
                                         <li class="mb-1">
                                             <strong class="text-dark mr-4">Тузулгон датасы:</strong>
-                                            <span> {{$user->created_at}} </span>
+                                            <span> {{$user->created_at->format('Y-m-d H:i:s A')}} </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -78,7 +78,7 @@
                                                                     <i class="fa fa-link ml-2"></i>
                                                                 </a>
                                                             </td>
-                                                            <td> {{$result->created_at}}  </td>
+                                                            <td> {{$result->created_at->format('Y-m-d H:i:s A')}}  </td>
                                                         </tr>
                                                     @endforeach
                                                 @endif

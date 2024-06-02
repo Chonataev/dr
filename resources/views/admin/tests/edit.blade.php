@@ -45,8 +45,8 @@
                             <div class="form-group">
                                 <label for="status">Status</label>
                                 <select class="form-control rounded" id="status" name="status">
-                                    <option value="true" {{ $test->status == 'true' ? 'selected' : '' }}>Активный</option>
-                                    <option value="false" {{ $test->status == 'false' ? 'selected' : '' }}>Неактивный</option>
+                                    <option value="true" {{ $test->status == 'true' ? 'selected' : '' }}>Активдүү</option>
+                                    <option value="false" {{ $test->status == 'false' ? 'selected' : '' }}>Активдүү эмес</option>
                                 </select>
                             </div>
 

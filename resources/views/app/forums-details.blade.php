@@ -27,7 +27,7 @@
                                         <div class="border p-3 rounded">
                                             {!! $discussion->body !!}
                                         </div>
-                                        <small class="m-2"> {{$discussion->created_at}} </small>
+                                        <small class="m-2"> {{$discussion->created_at->format('Y-m-d H:i:s A')}} </small>
                                     </div>
                                 @endforeach
                             @else

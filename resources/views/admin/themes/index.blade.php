@@ -27,7 +27,7 @@
                                     <tr>
                                         <td>{{ $theme->title }}</td>
                                         <td>{{ $theme->name }}</td>
-                                        <td>{{ $theme->status }}</td>
+                                        <td>{{ $theme->status == 1? 'Активдүү' : 'Активдүү эмес' }}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{ route('themes.show', $theme) }}" class="btn btn-primary mr-1"> көрүү </a>

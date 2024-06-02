@@ -30,16 +30,16 @@
                                     <thead>
                                     <tr>
                                         <th>№</th>
-                                        <th>Аты</th>
                                         <th>Темасы</th>
+                                        <th>Аты</th>
                                         <th>Кочуруу</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if(!empty($files))
-                                        @foreach($files as $file)
+                                        @foreach($files as $index => $file)
                                             <tr>
-                                                <td>{{$file->id}}</td>
+                                                <td>{{$index+1}}</td>
                                                 <td>{{$file->title}}</td>
                                                 <td>{{$file->file_url}}</td>
                                                 <td>

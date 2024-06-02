@@ -29,7 +29,7 @@
                                         <tr>
                                             <td>{{ $book->title }}</td>
                                             <td>{{ $book->theme_title }}</td>
-                                            <td>{{ $book->status }}</td>
+                                            <td>{{ $book->status == 1? 'Активдүү' : 'Активдүү эмес' }}</td>
                                             <td>
                                                 @if($book->type == 1)
                                                     Улгу

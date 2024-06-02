@@ -60,10 +60,17 @@
                                 </select>
                             </div>
 
-
                             <div class="form-group">
                                 <label for="status">Статус</label>
-                                <input type="text" class="form-control" id="status" name="status" value="{{ old('status', $book->status) }}">
+                                <select class="form-control" id="status" name="status">
+                                    @if($book->status == 1)
+                                        <option selected value="{{ $book->status }}"> Активдүү </option>
+                                        <option value="0"> Активдүү эмес </option>
+                                    @else
+                                        <option value="1"> Активдүү </option>
+                                        <option selected value="{{ $book->status }}"> Активдүү эмес </option>
+                                    @endif
+                                </select>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Сактоо</button>
