@@ -29,13 +29,13 @@
                                 @if($theme->description)
                                     <p>{!! $theme->description !!}</p>
                                 @else
-                                    <p>Маалымат жок</p>
+                                    <p> Азырынча маалымат жок </p>
                                 @endif
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h5>Улгу мисалдар </h5>
+                                <h5>Үлгү мисалдар </h5>
                             </div>
                             <div class="card-body">
                                 @if(count($examples)>0)
@@ -51,14 +51,14 @@
                                         @endforeach
                                     </ul>
                                 @else
-                                    <p>Улгулор жок</p>
+                                    <p>Үлгү мисалдар азырынча киргизиле элек</p>
                                 @endif
                             </div>
                         </div>
 
                         <div class="card">
                             <div class="card-header">
-                                <h5>Оз алдынча мисалдар</h5>
+                                <h5>Өз алдынча мисалдар</h5>
                             </div>
                             <div class="card-body">
                                 @if(count($exercises)>0)
@@ -74,7 +74,7 @@
                                         @endforeach
                                     </ul>
                                 @else
-                                    <p>Оз алдынча мисалдар жок</p>
+                                    <p>Өз алдынча мисалдар азырынча киргизиле элек</p>
                                 @endif
                             </div>
                         </div>
@@ -96,13 +96,13 @@
                                         @endforeach
                                     </ul>
                                 @else
-                                    <p>Адабияттар жок</p>
+                                    <p>Адабияттар азырынча киргизиле элек</p>
                                 @endif
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h5>Тест</h5>
+                                <h5>Билимди бекемдөө үчүн тест</h5>
                             </div>
                             <div class="card-body">
                                 @if(count($tests) > 0)
@@ -119,12 +119,12 @@
                                         @endforeach
                                     </ul>
                                 @else
-                                    <p>Тест жок</p>
+                                    <p>Тест азырынча киргизиле элек</p>
                                 @endif
                             </div>
                         </div>
                     @else
-                        <p> Маалымат жок </p>
+                        <p> Маалымат азырынча киргизиле элек </p>
                     @endif
                 </div>
             </div>

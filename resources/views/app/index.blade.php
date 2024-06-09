@@ -58,7 +58,7 @@
                                                 @endforeach
                                             </ul>
                                         @else
-                                            <p>Жок</p>
+                                            <p>Азырынча маалымат жок</p>
                                         @endif
                                     </div>
                                 </div>

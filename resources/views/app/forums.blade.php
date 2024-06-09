@@ -21,14 +21,14 @@
                                 </div>
                                 <div class="card-footer">
                                     <p class="card-text d-inline">
-                                        <small class="text-muted">{{ $forum->created_at->format('Y-m-d H:i:s A') }}</small>
+                                        <small class="text-muted">{{ $forum->created_at->format('Y-m-d H:i:s') }}</small>
                                     </p>
                                     <a href="/forums/forum/{{$forum->id}}" class="btn btn-primary float-right"> Кененирээк маалымат </a>
                                 </div>
                             </div>
                         @endforeach
                     @else
-                        <p> Маалымат жок </p>
+                        <p> Азырынча маалымат жок </p>
                     @endif
                 </div>
             </div>

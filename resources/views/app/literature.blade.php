@@ -32,7 +32,7 @@
                                         <th>№</th>
                                         <th>Темасы</th>
                                         <th>Аты</th>
-                                        <th>Кочуруу</th>
+                                        <th>Жүктөө</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -43,7 +43,7 @@
                                                 <td>{{$file->title}}</td>
                                                 <td>{{$file->file_url}}</td>
                                                 <td>
-                                                    <a href="{{ route('download', ['fileName' => $file->file_url]) }}">Файлды кочуруу</a>
+                                                    <a href="{{ route('download', ['fileName' => $file->file_url]) }}">Файлды жүктөө</a>
                                                 </td>
                                             </tr>
                                         @endforeach

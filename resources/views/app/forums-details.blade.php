@@ -17,7 +17,7 @@
                                 <div class="border p-3 rounded">
                                     {!! $forum->body!!}
                                 </div>
-                                <small class="m-2"> {{ $forum->created_at->format('Y-m-d H:i:s A') }} </small>
+                                <small class="m-2"> {{ $forum->created_at->format('Y-m-d H:i:s') }} </small>
                             </div>
 
                             @if(count($discussions)>0)
@@ -27,17 +27,17 @@
                                         <div class="border p-3 rounded">
                                             {!! $discussion->body !!}
                                         </div>
-                                        <small class="m-2"> {{$discussion->created_at->format('Y-m-d H:i:s A')}} </small>
+                                        <small class="m-2"> {{$discussion->created_at->format('Y-m-d H:i:s')}} </small>
                                     </div>
                                 @endforeach
                             @else
-                                <p> Маалымат жок </p>
+                                <p> Азырынча маалымат жок </p>
                             @endif
 
                             @if(Auth::check())
                                 <form class="form card-body p-0" method="post" action="{{ route('user.forum.comment.store') }}">
                                     @csrf
-                                    <h4 class="card-title"> Жооп беруу </h4>
+                                    <h4 class="card-title"> Жооп жазуу </h4>
                                     <input type="hidden" value="{{$forum->id}}" name="forum_id">
                                     <div class="basic-form">
                                         <form>
@@ -55,7 +55,7 @@
                             @endif
                         </div>
                     @else
-                        <p> Маалымат жок </p>
+                        <p> Азырынча маалымат жок </p>
                     @endif
                 </div>
             </div>

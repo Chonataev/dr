@@ -18,7 +18,7 @@
                     </div>
                     <div class="card-body">
                         @if ($questions->isEmpty())
-                            <p> Азырча суроолор жок </p>
+                            <p> Азырынча суроолор жок </p>
                         @else
                             <table class="table">
                                 <thead>

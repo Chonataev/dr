@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <p><strong>Тема:</strong> {{ $theme->title }}</p>
                         <p><strong>Статус:</strong> {{ $theme->status ? 'Active' : 'Inactive' }}</p>
-                        <p><strong>Тузулгон датасы:</strong> {{ $theme->created_at }}</p>
+                        <p><strong>Түзүлгөн датасы:</strong> {{ $theme->created_at->format('Y-m-d H:i:s') }}</p>
                         <p><strong>Текст:</strong> {!! $theme->description !!}</p>
                         <!-- Дополнительные детали, если нужно -->
                     </div>

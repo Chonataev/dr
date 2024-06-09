@@ -165,7 +165,7 @@
                         </li>
                     @endforeach
                 @else
-                    <li class="nav-label text-warning">Тема жок</li>
+                    <li class="nav-label text-warning">Азырынча темалыр жок</li>
                 @endif
             </ul>
 

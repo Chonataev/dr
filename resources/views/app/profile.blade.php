@@ -40,8 +40,8 @@
                                             <span> {{$user->email}} </span>
                                         </li>
                                         <li class="mb-1">
-                                            <strong class="text-dark mr-4">Тузулгон датасы:</strong>
-                                            <span> {{$user->created_at->format('Y-m-d H:i:s A')}} </span>
+                                            <strong class="text-dark mr-4">Түзүлгөн датасы:</strong>
+                                            <span> {{$user->created_at->format('Y-m-d H:i:s')}} </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -78,7 +78,7 @@
                                                                     <i class="fa fa-link ml-2"></i>
                                                                 </a>
                                                             </td>
-                                                            <td> {{$result->created_at->format('Y-m-d H:i:s A')}}  </td>
+                                                            <td> {{$result->created_at->format('Y-m-d H:i:s')}}  </td>
                                                         </tr>
                                                     @endforeach
                                                 @endif
